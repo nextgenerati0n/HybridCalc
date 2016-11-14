@@ -11,7 +11,7 @@ namespace HybridCalculator
         protected int _baseES;
 
         // method to calculate flat tiers.
-        abstract public void FlatTiers(int flatES);
+        abstract public int FlatTiers(int flatES);
 
         // BaseES property for different classes
         public int BaseES
@@ -36,7 +36,7 @@ namespace HybridCalculator
             flatTiers.Add(152, 0);
         }
 
-        public override void FlatTiers(int flatES)
+        public override int FlatTiers(int flatES)
         {
             // bool and while loop to loop over it again in case of a value > 152
             bool c = true;
@@ -48,7 +48,7 @@ namespace HybridCalculator
                     Console.WriteLine("It's garbage, go get some new armour");
                     Console.ReadKey();
                     c = false;
-                    return;
+                    return 0;
                 }
                 else if (flatES > 152)
                 {
@@ -66,8 +66,7 @@ namespace HybridCalculator
                         break;
                     }
             }
-
-            HasStunRecovery.HasStun(_baseES, flatES);
+            return flatES;
         }
     }
 
@@ -86,7 +85,7 @@ namespace HybridCalculator
             flatTiers.Add(78, 0);
         }
 
-        public override void FlatTiers(int flatES)
+        public override int FlatTiers(int flatES)
         {
             // Bool and while loop to loop over the code again in case of a value > 78
             bool c = true;
@@ -98,7 +97,7 @@ namespace HybridCalculator
                     Console.WriteLine("It's garbage, go get a new helmet");
                     Console.ReadKey();
                     c = false;
-                    return;
+                    return 0;
                 }
                 // If it is larger than 78, it is madness / nonexistant
                 else if (flatES > 78)
@@ -117,7 +116,7 @@ namespace HybridCalculator
                         break;
                     }
             }
-            HasStunRecovery.HasStun(_baseES, flatES);
+            return flatES;
         }
     }
 
@@ -138,7 +137,7 @@ namespace HybridCalculator
             flatTiers.Add(141, 0);
         }
 
-        public override void FlatTiers(int flatES)
+        public override int FlatTiers(int flatES)
         {
             // Bool and while loop to loop through again if the value > 141
             bool c = true;
@@ -150,7 +149,7 @@ namespace HybridCalculator
                     Console.WriteLine("It's garbage, go get a new shield");
                     Console.ReadKey();
                     c = false;
-                    return;
+                    break;
                 }
                 // if the value > 141, it is non existant technically
                 else if (flatES > 141)
@@ -169,7 +168,7 @@ namespace HybridCalculator
                         break;
                     }  
             }
-            HasStunRecovery.HasStun(_baseES, flatES);
+            return flatES;
         }
     }
 }
