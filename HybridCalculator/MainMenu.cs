@@ -23,9 +23,12 @@ namespace HybridCalculator
                     item = new SpiritShield();
                     break;
             }
-
+            //Get the current flat ES value
             int flatES = EnterESValue();
-            item.FlatTiers(flatES);
+            //Determine what the maximum potential ES value is and return it
+            int maxFlatES = item.FlatTiers(flatES);
+            //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
+            if (maxFlatES != 0) HasStunRecovery.HasStun(item.BaseES, maxFlatES);
         }
 
         private int Choices()
