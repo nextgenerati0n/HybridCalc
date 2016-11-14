@@ -8,15 +8,15 @@ namespace HybridCalculator
 {
     class Armour
     {
-        //private int _flatES;
+        // To store the baseES of each different item
+        protected int _baseES;
+        // BaseES property for different classes
+        public int BaseES
+        {
+            get { return _baseES; }
+        }
 
-        //public int FlatES
-        //{
-        //    get { return _flatES; }
-        //    set { _flatES = value; }
-        //}
         public int flatES { get; set; }
-        public int baseES { get; set; }
         public int maxFlatES { get; set; }
     }
 
@@ -24,7 +24,7 @@ namespace HybridCalculator
     {
         public Regalia()
         {
-            baseES = 175;
+            _baseES = 175;
         }
     }
 
@@ -32,7 +32,7 @@ namespace HybridCalculator
     {
         public Circlet()
         {
-            baseES = 100;
+            _baseES = 100;
         } 
     }
 
@@ -40,7 +40,7 @@ namespace HybridCalculator
     {
         public SpiritShield()
         {
-            baseES = 84;
+            _baseES = 84;
         }
     }
 }
