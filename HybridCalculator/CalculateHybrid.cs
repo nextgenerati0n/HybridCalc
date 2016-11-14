@@ -16,6 +16,40 @@ namespace HybridCalculator
             int minHybridRoll = 0;
             int maxHybridRoll = maxRoll;
 
+            /*
+            Dictionary<int, int> stunTiers = new Dictionary<int, int>();
+            stunTiers.Add(106, 3);
+            stunTiers.Add(135, 2);
+            stunTiers.Add(145, 1);
+            stunTiers.Add(152, 0);
+
+            foreach (var i in stunTiers)
+            {
+                if (stunRoll < 6)
+                {
+                    Console.WriteLine("It is not possible to have a value lower than 6, try again");
+                    Console.WriteLine("Press any key to continue ...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    isHybrid = false;
+                    Calculate(baseES, flatES, maxHybridRoll);
+                }
+                else if (stunRoll <= i.Key)
+                {
+                    flatES = i.Key;
+                    ThisIsTier.Desc(i.Value);
+                    break;
+                }
+
+                else if (stunRoll <= 28)
+                {
+                    Console.WriteLine("That is a suffix and not a hybrid roll");
+                    Console.WriteLine("Press any key to continue ...");
+                    Console.ReadKey();
+                    MainMenu.Choices();
+                }
+            }
+            */
             if (stunRoll < 6)
             {
                 Console.WriteLine("It is not possible to have a value lower than 6, try again");

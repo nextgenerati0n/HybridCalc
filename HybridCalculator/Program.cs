@@ -10,14 +10,13 @@ namespace HybridCalculator
     {
         public static void Main(string[] args)
         {
+            //This is where you'll start, duh
+
             bool displayMenu = true;
             while (displayMenu)
             {
                 displayMenu = MainMenu.Choices();
             }
-
         }
-
-
     }
 }

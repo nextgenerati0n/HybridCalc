@@ -10,6 +10,8 @@ namespace HybridCalculator
     {
         public static bool Choices()
         {
+            //User to select choice of armour to get a BaseES value that will remain unchanged for the duration of the program
+
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Vaal Regalia");
