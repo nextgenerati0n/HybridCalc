@@ -24,7 +24,7 @@ namespace HybridCalculator
     {
         public Regalia()
         {
-            baseES = 175;
+            _baseES = 175;
         }
     }
 
@@ -32,7 +32,7 @@ namespace HybridCalculator
     {
         public Circlet()
         {
-            baseES = 100;
+            _baseES = 100;
         } 
     }
 
@@ -40,7 +40,7 @@ namespace HybridCalculator
     {
         public SpiritShield()
         {
-            baseES = 84;
+            _baseES = 84;
         }
     }
 }
