@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HybridCalculator
 {
@@ -19,17 +15,17 @@ namespace HybridCalculator
             {
                 case 1:
                     item = new Regalia();
-                    WhichFlatTier.ChestFlatTier(item.BaseES);
                     break;
                 case 2:
                     item = new Circlet();
-                    WhichFlatTier.HelmetFlatTier(item.BaseES);
                     break;
                 case 3:
                     item = new SpiritShield();
-                    WhichFlatTier.ShieldFlatTier(item.BaseES);
                     break;
             }
+
+            int flatES = EnterESValue();
+            item.FlatTiers(flatES);
         }
 
         private int Choices()
@@ -41,10 +37,18 @@ namespace HybridCalculator
             Console.WriteLine("1) Vaal Regalia");
             Console.WriteLine("2) Hubris Circlet");
             Console.WriteLine("3) Titanium Spirit Shield");
-            //Console.WriteLine("4) Exit");
 
             // Parse what we read from the console 
             return int.Parse(Console.ReadLine());
+        }
+
+        private int EnterESValue()
+        {
+            Console.Clear();
+            Console.Write("Enter the Increased Flat Energy Shield value: ");
+            int flatES = int.Parse(Console.ReadLine());
+            return flatES;
+
         }
     }
 }
