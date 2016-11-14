@@ -23,19 +23,19 @@ namespace HybridCalculator
             if (choice == "1") //Chest
             {
                 Regalia vaal = new Regalia();
-                WhichFlatTier.ChestFlatTier(vaal.baseES);
+                WhichFlatTier.ChestFlatTier(vaal.BaseES);
                 return true;
             }
             if (choice == "2") //Helmet
             {
                 Circlet hubris = new Circlet();
-                WhichFlatTier.HelmetFlatTier(hubris.baseES);
+                WhichFlatTier.HelmetFlatTier(hubris.BaseES);
                 return true;
             }
             if (choice == "3") //Shield
             {
                 SpiritShield titanium = new SpiritShield();
-                WhichFlatTier.ShieldFlatTier(titanium.baseES);
+                WhichFlatTier.ShieldFlatTier(titanium.BaseES);
                 return true;
             }
             if (choice == "4")
