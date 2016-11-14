@@ -8,8 +8,10 @@ namespace HybridCalculator
 {
     class DetermineIncreasedES
     {
+        
         public static void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll, bool isHybrid)
         {
+            //Ask the user to input their current Increased Energy Shield value
             Console.Write("What is the maximum increased ES: ");
             int incES = int.Parse(Console.ReadLine());
             int maxIncES = incES - minHybridRoll;
