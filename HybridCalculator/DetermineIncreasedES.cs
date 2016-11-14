@@ -19,7 +19,7 @@ namespace HybridCalculator
             {
                 Console.WriteLine("It's garbage, go get some new armour");
                 Console.ReadKey();
-                MainMenu.Choices();
+                return;
             }
             else if (maxIncES <= 82 && minIncES > 65)
             {
@@ -49,16 +49,12 @@ namespace HybridCalculator
             {
                 Console.WriteLine("That could be one of 2 different Increased Maximum ES tiers, divine and try again");
                 Console.WriteLine("\nPress 1 to try again or any other key to return to the main menu: ");
-                int choice = int.Parse(Console.ReadLine());
+                string choice = Console.ReadLine();
 
-                if (choice == 1)
-                {
+                if (choice == "1")
                     Calculate(baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
-                }
                 else
-                {
-                    MainMenu.Choices();
-                }
+                    return;                
 
                 Console.ReadKey();
             }

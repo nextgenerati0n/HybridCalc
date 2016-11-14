@@ -8,7 +8,31 @@ namespace HybridCalculator
 {
     class MainMenu
     {
-        public static bool Choices()
+        // Armour object to determine the baseES with
+        Armour item;
+
+        public void Menu()
+        { 
+            int itemID = Choices();
+
+            switch(itemID)
+            {
+                case 1:
+                    item = new Regalia();
+                    WhichFlatTier.ChestFlatTier(item.BaseES);
+                    break;
+                case 2:
+                    item = new Circlet();
+                    WhichFlatTier.HelmetFlatTier(item.BaseES);
+                    break;
+                case 3:
+                    item = new SpiritShield();
+                    WhichFlatTier.ShieldFlatTier(item.BaseES);
+                    break;
+            }
+        }
+
+        private int Choices()
         {
             //User to select choice of armour to get a BaseES value that will remain unchanged for the duration of the program
 
@@ -17,35 +41,10 @@ namespace HybridCalculator
             Console.WriteLine("1) Vaal Regalia");
             Console.WriteLine("2) Hubris Circlet");
             Console.WriteLine("3) Titanium Spirit Shield");
-            Console.WriteLine("4) Exit");
-            string choice = Console.ReadLine();
+            //Console.WriteLine("4) Exit");
 
-            if (choice == "1") //Chest
-            {
-                Regalia vaal = new Regalia();
-                WhichFlatTier.ChestFlatTier(vaal.BaseES);
-                return true;
-            }
-            if (choice == "2") //Helmet
-            {
-                Circlet hubris = new Circlet();
-                WhichFlatTier.HelmetFlatTier(hubris.BaseES);
-                return true;
-            }
-            if (choice == "3") //Shield
-            {
-                SpiritShield titanium = new SpiritShield();
-                WhichFlatTier.ShieldFlatTier(titanium.BaseES);
-                return true;
-            }
-            if (choice == "4")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            // Parse what we read from the console 
+            return int.Parse(Console.ReadLine());
         }
     }
 }
