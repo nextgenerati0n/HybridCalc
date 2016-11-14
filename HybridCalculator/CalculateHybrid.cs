@@ -46,7 +46,7 @@ namespace HybridCalculator
                     Console.WriteLine("That is a suffix and not a hybrid roll");
                     Console.WriteLine("Press any key to continue ...");
                     Console.ReadKey();
-                    MainMenu.Choices();
+                    return;
                 }
             }
             */
@@ -106,7 +106,7 @@ namespace HybridCalculator
                 Console.WriteLine("That is a suffix and not a hybrid roll");
                 Console.WriteLine("Press any key to continue ...");
                 Console.ReadKey();
-                MainMenu.Choices();
+                return;
             }
             else
             {

@@ -23,7 +23,7 @@ namespace HybridCalculator
                 {
                     Console.WriteLine("It's garbage, go get some new armour");
                     Console.ReadKey();
-                    MainMenu.Choices();
+                    return;
                 }
                 else if (flatES <= i.Key)
                 {
@@ -57,7 +57,7 @@ namespace HybridCalculator
                 {
                     Console.WriteLine("It's garbage, go get a new helmet");
                     Console.ReadKey();
-                    MainMenu.Choices();
+                    return;
                 }
                 else if (flatES <= i.Key)
                 {
@@ -92,7 +92,7 @@ namespace HybridCalculator
                 {
                     Console.WriteLine("It's garbage, go get a new shield");
                     Console.ReadKey();
-                    MainMenu.Choices();
+                    return;
                 }
                 else if (flatES <= i.Key)
                 {

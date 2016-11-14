@@ -22,7 +22,7 @@ namespace HybridCalculator
                 MinMaxDesc("min", minES);
                 MinMaxDesc("max", maxES);
                 StartAgain();
-                MainMenu.Choices();
+                return;
             }
             else
             {
@@ -31,7 +31,7 @@ namespace HybridCalculator
                 MinMaxDesc("min", minES);
                 MinMaxDesc("max", maxES);
                 StartAgain();
-                MainMenu.Choices();
+                return;
             }
         }
 
