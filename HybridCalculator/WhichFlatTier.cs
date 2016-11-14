@@ -10,7 +10,7 @@ namespace HybridCalculator
     {
         public static void ChestFlatTier(int baseES)
         {
-            int flatES = EnterESValue();
+            int flatES = EnterESValue(); //user to input the current Maximum Energy Shield value
             Dictionary<int, int> flatTiers = new Dictionary<int, int>();
             flatTiers.Add(106, 3);
             flatTiers.Add(135, 2);
@@ -25,7 +25,7 @@ namespace HybridCalculator
                     Console.ReadKey();
                     return;
                 }
-                else if (flatES <= i.Key)
+                else if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     flatES = i.Key;
                     ThisIsTier.Desc(i.Value);
@@ -45,7 +45,7 @@ namespace HybridCalculator
 
         public static void HelmetFlatTier(int baseES)
         {
-            int flatES = EnterESValue();
+            int flatES = EnterESValue(); //user to input the current Maximum Energy Shield value
             Dictionary<int, int> flatTiers = new Dictionary<int, int>();
             flatTiers.Add(48, 2);
             flatTiers.Add(72, 1);
@@ -59,7 +59,7 @@ namespace HybridCalculator
                     Console.ReadKey();
                     return;
                 }
-                else if (flatES <= i.Key)
+                else if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     flatES = i.Key;
                     ThisIsTier.Desc(i.Value);
@@ -79,7 +79,7 @@ namespace HybridCalculator
 
         public static void ShieldFlatTier(int baseES)
         {
-            int flatES = EnterESValue();
+            int flatES = EnterESValue(); //user to input the current Maximum Energy Shield value
             Dictionary<int, int> flatTiers = new Dictionary<int, int>();
             flatTiers.Add(72, 3);
             flatTiers.Add(106, 2);
@@ -94,7 +94,7 @@ namespace HybridCalculator
                     Console.ReadKey();
                     return;
                 }
-                else if (flatES <= i.Key)
+                else if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     flatES = i.Key;
                     ThisIsTier.Desc(i.Value);

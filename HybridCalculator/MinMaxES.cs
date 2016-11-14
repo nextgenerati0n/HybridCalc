@@ -10,8 +10,8 @@ namespace HybridCalculator
     {
         public static void Calculate(int minIncES, int maxIncES, int baseES, int flatES, int minHybridRoll, int maxHybridRoll, bool isHybrid)
         {
-
-            if (isHybrid == true)
+            
+            if (isHybrid == true) //Calculates the highest possible energy shield value they can roll on their item, includes additional hybrid value
             {
                 float totalMinHybrid = minIncES + minHybridRoll;
                 float totalMaxHybrid = maxIncES + minHybridRoll;
@@ -24,7 +24,7 @@ namespace HybridCalculator
                 StartAgain();
                 return;
             }
-            else
+            else //Calculates the highest possible energy shield value they can roll on their item
             {
                 float minES = (int)Math.Round((baseES + flatES) * ((minIncES + 20f) / 100)) + (baseES + flatES);
                 float maxES = (int)Math.Round((baseES + flatES) * ((maxIncES + 20f) / 100)) + (baseES + flatES);
@@ -35,12 +35,12 @@ namespace HybridCalculator
             }
         }
 
-        static void MinMaxHybridDesc(string minMax, int hybridRoll)
+        static void MinMaxHybridDesc(string minMax, int hybridRoll) //Prints out the min/max total inc hybrid values
         {
             Console.WriteLine($"The {minMax} % Hybrid Energy Shield that can roll on this item is: {hybridRoll}");
         }
 
-        static void MinMaxDesc(string minMax, float esRoll)
+        static void MinMaxDesc(string minMax, float esRoll) //Prints out the min/max total
         {
             Console.WriteLine($"The {minMax} % Energy Shield that can roll on this item is: {esRoll}");
         }

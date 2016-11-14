@@ -10,12 +10,14 @@ namespace HybridCalculator
     {
         public static void Calculate(int baseES, int flatES, int maxRoll)
         {
-            Console.Write("What is the Roll for % Increased Stun Recovery? ");
+            Console.Write("What is the Roll for % Increased Stun Recovery? "); //Asks for user to input a stun roll to determine the min/max Increased Energy Shield
             int stunRoll = int.Parse(Console.ReadLine());
             bool isHybrid = false;
             int minHybridRoll = 0;
             int maxHybridRoll = maxRoll;
 
+
+            //Commented section below will replace the else if list eventually
             /*
             Dictionary<int, int> stunTiers = new Dictionary<int, int>();
             stunTiers.Add(106, 3);
@@ -113,6 +115,7 @@ namespace HybridCalculator
                 Console.WriteLine("Are you sure you can even read?");
                 Calculate(baseES, flatES, maxHybridRoll);
             }
+            //Takes the values forward to determine Increased Enegry Shield value
             DetermineIncreasedES.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
         }
     }
