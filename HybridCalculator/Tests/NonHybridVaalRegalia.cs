@@ -32,7 +32,7 @@ namespace HybridCalculator.Tests
             string stunChoice = "n";
             bool expected = false;
             //Act
-            bool actual = HasStunRecovery.Decision(item.BaseES, maxFlatES, stunChoice);
+            bool actual = MainMenu.HasStunRecovery(stunChoice);
             //Assert
             Assert.AreEqual(expected, actual);
         }

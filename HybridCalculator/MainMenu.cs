@@ -32,12 +32,8 @@ namespace HybridCalculator
             //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
             if (maxFlatES != 0)
             {
-                bool hasStun = HasStunRecovery.Decision(item.BaseES, maxFlatES, stunChoice);
+                bool hasStun = HasStunRecovery(stunChoice);
             }
-            int minHybridRoll = 0;
-            int maxHybridRoll = 0;
-            bool isHybrid;
-            DetermineIncreasedES.Calculate(item.BaseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
         }
 
         private int Choices()
@@ -61,11 +57,29 @@ namespace HybridCalculator
             int flatES = int.Parse(Console.ReadLine());
             return flatES;
         }
-        private static string EnterStunChoice()
+        private string EnterStunChoice()
         {
             Console.Write("Does the item have an '% Increased Stun Recovery' value: y/n ");
             string hybridChoice = Console.ReadLine();
             return hybridChoice;
+        }
+        private bool HasStunRecovery(string stunChoice)
+        {
+            if (stunChoice == "y")
+            {
+                //CalculateHybrid.Calculate(baseES, flatES, maxHybridRoll);
+                return true;
+            }
+            else if (stunChoice == "n")
+            {
+                bool isHybrid = false;
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("That was a simple choice between 'y' and 'n', try again dummy!");
+                return false;
+            }
         }
     }
 }
