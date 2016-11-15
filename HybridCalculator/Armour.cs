@@ -17,7 +17,7 @@ namespace HybridCalculator
         public int BaseES
         { get { return _baseES; } }
         // flatES property
-        public int flatES { get; set; }
+        public int FlatES { get; set; }
         // minFlat property
         public int minFlat { get; set; }
         // maxFlat property
@@ -47,13 +47,13 @@ namespace HybridCalculator
                 foreach (KeyValuePair<int, int> i in flatTiers)
                     if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                     {
-                        flatES = i.Key;
+                        FlatES = i.Key;
                         ThisIsTier.Desc(i.Value);
                         c = false;
                         break;
                     }
             }
-            return flatES;
+            return FlatES;
         }
 
         public void AddGrade(int es, int tier)

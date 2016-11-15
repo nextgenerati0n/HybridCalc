@@ -8,50 +8,53 @@ namespace HybridCalculator
 {
     class CalculateHybrid
     {
-        public static void Calculate(int baseES, int flatES, int maxRoll)
+        public static void Calculate(int baseES, int flatES)
         {
             Console.Write("What is the Roll for % Increased Stun Recovery? "); //Asks for user to input a stun roll to determine the min/max Increased Energy Shield
             int stunRoll = int.Parse(Console.ReadLine());
             bool isHybrid = false;
             int minHybridRoll = 0;
-            int maxHybridRoll = maxRoll;
+            int maxHybridRoll = 0;
 
 
             //Commented section below will replace the else if list eventually
-            /*
-            Dictionary<int, int> stunTiers = new Dictionary<int, int>();
-            stunTiers.Add(106, 3);
-            stunTiers.Add(135, 2);
-            stunTiers.Add(145, 1);
-            stunTiers.Add(152, 0);
 
-            foreach (var i in stunTiers)
-            {
-                if (stunRoll < 6)
-                {
-                    Console.WriteLine("It is not possible to have a value lower than 6, try again");
-                    Console.WriteLine("Press any key to continue ...");
-                    Console.ReadLine();
-                    Console.Clear();
-                    isHybrid = false;
-                    Calculate(baseES, flatES, maxHybridRoll);
-                }
-                else if (stunRoll <= i.Key)
-                {
-                    flatES = i.Key;
-                    ThisIsTier.Desc(i.Value);
-                    break;
-                }
+            //int[,,] stunTiers = new int[,,] { { 
+            //        { 7, 6, 14 },
+            //        { 9, 15, 23 },
+            //        { 11, 24, 32 },
+            //        { 13, 33, 41 },
+            //        { 15, 42, 50 },
+            //        { 15, 51, 56 } } };
 
-                else if (stunRoll <= 28)
-                {
-                    Console.WriteLine("That is a suffix and not a hybrid roll");
-                    Console.WriteLine("Press any key to continue ...");
-                    Console.ReadKey();
-                    return;
-                }
-            }
-            */
+
+            //foreach (int i in stunTiers)
+            //{
+            //    if (stunRoll < 6)
+            //    {
+            //        Console.WriteLine("It is not possible to have a value lower than 6, try again");
+            //        Console.WriteLine("Press any key to continue ...");
+            //        Console.ReadLine();
+            //        Console.Clear();
+            //        isHybrid = false;
+            //        Calculate(baseES, flatES);
+            //    }
+            //    else if (stunRoll <= stunTiers[0,i,0])
+            //    {
+            //        stunRoll = stunTiers[0, i, 0];
+            //        //ThisIsTier.Desc(i.Value);
+            //        break;
+            //    }
+
+            //    else if (stunRoll <= 28)
+            //    {
+            //        Console.WriteLine("That is a suffix and not a hybrid roll");
+            //        Console.WriteLine("Press any key to continue ...");
+            //        Console.ReadKey();
+            //        return;
+            //    }
+            //}
+
             if (stunRoll < 6)
             {
                 Console.WriteLine("It is not possible to have a value lower than 6, try again");
@@ -59,7 +62,7 @@ namespace HybridCalculator
                 Console.ReadLine();
                 Console.Clear();
                 isHybrid = false;
-                Calculate(baseES, flatES, maxHybridRoll);
+                Calculate(baseES, flatES);
             }
             else if (stunRoll <= 7)
             {
@@ -113,10 +116,10 @@ namespace HybridCalculator
             else
             {
                 Console.WriteLine("Are you sure you can even read?");
-                Calculate(baseES, flatES, maxHybridRoll);
+                Calculate(baseES, flatES);
             }
             //Takes the values forward to determine Increased Enegry Shield value
-            DetermineIncreasedES.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
+            DetermineIncreasedES.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
         }
     }
 }

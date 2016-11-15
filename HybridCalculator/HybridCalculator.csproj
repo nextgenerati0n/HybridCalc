@@ -52,7 +52,7 @@
     <Compile Include="MainMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\NonHybridVaalRegalia.cs" />
+    <Compile Include="Tests\NonHybridVaalRegaliaTest.cs" />
     <Compile Include="ThisIsTier.cs" />
     <Compile Include="Retired Classes\WhichFlatTier.cs" />
   </ItemGroup>

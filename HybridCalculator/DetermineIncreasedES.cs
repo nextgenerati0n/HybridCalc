@@ -9,7 +9,7 @@ namespace HybridCalculator
     class DetermineIncreasedES
     {
         
-        public static void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll, bool isHybrid)
+        public static void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll)
         {
             //Ask the user to input their current Increased Energy Shield value
             Console.Write("What is the maximum increased ES: ");
@@ -54,13 +54,13 @@ namespace HybridCalculator
                 string choice = Console.ReadLine();
 
                 if (choice == "1")
-                    Calculate(baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
+                    Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
                 else
                     return;                
 
                 Console.ReadKey();
             }
-            MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
+            MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES, minHybridRoll, maxHybridRoll);
         }
     }
 }
