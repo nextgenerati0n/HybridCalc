@@ -27,12 +27,13 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             Regalia item = new Regalia();
+            MainMenu menu = new MainMenu();
             int flatES = 140;
             int maxFlatES = item.FlatTiers(flatES);
             string stunChoice = "n";
             bool expected = false;
             //Act
-            bool actual = MainMenu.HasStunRecovery(stunChoice);
+            bool actual = menu.HasStunRecovery(stunChoice);
             //Assert
             Assert.AreEqual(expected, actual);
         }
