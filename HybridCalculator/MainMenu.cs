@@ -27,8 +27,17 @@ namespace HybridCalculator
             int flatES = EnterESValue();
             //Determine what the maximum potential ES value is and return it
             int maxFlatES = item.FlatTiers(flatES);
+            //Ask if armour has stun recovery or not
+            string stunChoice = EnterStunChoice();
             //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
-            if (maxFlatES != 0) HasStunRecovery.HasStun(item.BaseES, maxFlatES);
+            if (maxFlatES != 0)
+            {
+                bool hasStun = HasStunRecovery.Decision(item.BaseES, maxFlatES, stunChoice);
+            }
+            int minHybridRoll = 0;
+            int maxHybridRoll = 0;
+            bool isHybrid;
+            DetermineIncreasedES.Calculate(item.BaseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
         }
 
         private int Choices()
@@ -51,7 +60,12 @@ namespace HybridCalculator
             Console.Write("Enter the Increased Flat Energy Shield value: ");
             int flatES = int.Parse(Console.ReadLine());
             return flatES;
-
+        }
+        private static string EnterStunChoice()
+        {
+            Console.Write("Does the item have an '% Increased Stun Recovery' value: y/n ");
+            string hybridChoice = Console.ReadLine();
+            return hybridChoice;
         }
     }
 }

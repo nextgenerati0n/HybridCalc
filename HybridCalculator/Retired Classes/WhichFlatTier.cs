@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace HybridCalculator
 {
     class WhichFlatTier
-    {
+    {/*
         public static void ChestFlatTier(int baseES)
         {
             int flatES = EnterESValue(); //user to input the current Maximum Energy Shield value
@@ -37,7 +37,7 @@ namespace HybridCalculator
                 }
             }
 
-            HasStunRecovery.HasStun(baseES, flatES);
+            HasStunRecovery.Decision(baseES, flatES);
         }
 
         public static void HelmetFlatTier(int baseES)
@@ -71,7 +71,7 @@ namespace HybridCalculator
                 }
             }
 
-            HasStunRecovery.HasStun(baseES, flatES);
+            HasStunRecovery.Decision(baseES, flatES);
         }
 
         public static void ShieldFlatTier(int baseES)
@@ -106,7 +106,7 @@ namespace HybridCalculator
                 }
             }
 
-            HasStunRecovery.HasStun(baseES, flatES);
+            HasStunRecovery.Decision(baseES, flatES);
         }
 
         static int EnterESValue()
@@ -116,6 +116,6 @@ namespace HybridCalculator
             int flatES = int.Parse(Console.ReadLine());
             return flatES;
 
-        }
+        }*/
     }
 }

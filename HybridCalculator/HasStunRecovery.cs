@@ -8,26 +8,29 @@ namespace HybridCalculator
 {
     class HasStunRecovery
     {
-        public static void HasStun(int baseES, int flatES)
+        public static bool Decision(int baseES, int flatES, string stunChoice)
         {
-            Console.Write("Does the item have an '% Increased Stun Recovery' value: y/n ");
-            string hybridChoice = Console.ReadLine();
+            //string hybridChoice = EnterStunChoice();
             int minHybridRoll = 0;
             int maxHybridRoll = 0;
 
-            if (hybridChoice == "y")
+            if (stunChoice == "y")
             {
                 CalculateHybrid.Calculate(baseES, flatES, maxHybridRoll);
+                return true;
             }
-            else if (hybridChoice == "n")
+            else if (stunChoice == "n")
             {
                 bool isHybrid = false;
-                DetermineIncreasedES.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll, isHybrid);
+                return false;
             }
             else
             {
                 Console.WriteLine("That was a simple choice between 'y' and 'n', try again dummy!");
+                return false;
             }
         }
+
+
     }
 }
