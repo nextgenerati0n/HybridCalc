@@ -11,7 +11,7 @@ namespace HybridCalculator.Tests
     public class ChestTests
     {
         [TestMethod]
-        public void NonHybridRegaliaFlatES()
+        public void NonHybridRegaliaFlatESTier1()
         {
             //Arrange
             Regalia item = new Regalia();
