@@ -17,7 +17,7 @@ namespace HybridCalculator
             int maxHybridRoll = 0;
 
 
-            //Commented section below will replace the else if list eventually
+            //Commented section below will replace the else if list if suitable code is written
 
             //int[,,] stunTiers = new int[,,] { { 
             //        { 7, 6, 14 },
