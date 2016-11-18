@@ -5,54 +5,42 @@ namespace HybridCalculator
 {
     abstract class Armour
     {
+        #region Properties
         // To store tier information
         protected Dictionary<int, int> flatTiers;
         // To store the baseES of each different item
         protected int _baseES;
-
-        // method to calculate flat tiers.
-       // abstract public int FlatTiers(int flatES);
+        // To store the FlatES for calculations to determine maximum FlatES value
+        protected int _flatES;
+        // minFlat property
+        public int minFlat { get; set; }
+        // maxFlat property
+        public int maxFlat { get; set; }
+        //Validation message if intered properties are outside of desired range
+        public string ValidationMessage { get; private set; }
 
         // BaseES property for different classes
         public int BaseES
         { get { return _baseES; } }
         // flatES property
-        public int FlatES { get; set; }
-        // minFlat property
-        public int minFlat { get; set; }
-        // maxFlat property
-        public int maxFlat { get; set; }
+        public int FlatES
+        {
+            get { return _flatES; }
+            //Validation to make sure FlatES is within desired range
+            set {_flatES = ValidationHelpers.ValidateFlatES(value, minFlat, maxFlat);}
+        }
+        #endregion
 
         public int FlatTiers(int flatES)
         {
-            // bool and while loop to loop over it again in case of a value > 152
-            bool c = true;
-            while (c)
-            {
-                // First, check if the flat ES is within the limits of 73 and 152
-                if (flatES < minFlat)
+            // If FlatES is within desired range and it is worth looping over the tier dictionary, do so
+            foreach (KeyValuePair<int, int> i in flatTiers)
+                if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
-                    Console.WriteLine("It's garbage, go get some new armour");
-                    Console.ReadKey();
-                    c = false;
-                    return 0;
+                    FlatES = i.Key;
+                    ThisIsTier.Desc(i.Value);
+                    break;
                 }
-                else if (flatES > maxFlat)
-                {
-                    Console.WriteLine("That's not an acceptable answer, are you drunk?");
-                    Console.ReadKey();
-                }
-
-                // If it is, and it is worth looping over the tier dictionary, do so
-                foreach (KeyValuePair<int, int> i in flatTiers)
-                    if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
-                    {
-                        FlatES = i.Key;
-                        ThisIsTier.Desc(i.Value);
-                        c = false;
-                        break;
-                    }
-            }
             return FlatES;
         }
 
