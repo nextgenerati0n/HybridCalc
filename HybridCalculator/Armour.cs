@@ -13,9 +13,9 @@ namespace HybridCalculator
         // To store the FlatES for calculations to determine maximum FlatES value
         protected int _flatES;
         // minFlat property
-        public int minFlat { get; set; }
+        protected int minFlat { get; set; }
         // maxFlat property
-        public int maxFlat { get; set; }
+        protected int maxFlat { get; set; }
         //Validation message if intered properties are outside of desired range
         public string ValidationMessage { get; private set; }
 
