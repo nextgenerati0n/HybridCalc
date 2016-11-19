@@ -30,10 +30,8 @@ namespace HybridCalculator
             //Ask if armour has stun recovery or not
             string stunChoice = EnterStunChoice();
             //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
-            if (maxFlatES != 0)
-            {
-                bool hasStun = HasStunRecovery(stunChoice);
-            }
+            HasStunRecovery(stunChoice);
+            
         }
 
         private int Choices()
@@ -74,7 +72,7 @@ namespace HybridCalculator
             {
                 int minHybridRoll = 0;
                 int maxHybridRoll = 0;
-                DetermineIncreasedES.Calculate(item.BaseES, item.FlatES, minHybridRoll, maxHybridRoll);
+                DetermineIncreasedES.Calculate(item.BaseES, item.FlatES);
                 return false;
             }
             else
