@@ -47,7 +47,6 @@
     <Compile Include="Armour.cs" />
     <Compile Include="CalculateHybrid.cs" />
     <Compile Include="DetermineIncreasedES.cs" />
-    <Compile Include="Retired Classes\HasStunRecovery.cs" />
     <Compile Include="MinMaxES.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Program.cs" />
@@ -55,7 +54,6 @@
     <Compile Include="Tests\NonHybridVaalRegaliaTest.cs" />
     <Compile Include="Tests\SetPropertyTests.cs" />
     <Compile Include="ThisIsTier.cs" />
-    <Compile Include="Retired Classes\WhichFlatTier.cs" />
     <Compile Include="ValidationHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
