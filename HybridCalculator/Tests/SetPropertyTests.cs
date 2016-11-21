@@ -15,6 +15,31 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             Regalia item = new Regalia();
+            item.FlatES = 10;
+            string expected = "It's garbage, go get some new armour";
+            //Act
+            string actual = ValidationHelpers.ValidationMessage;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void FlatESTooHigh()
+        {
+            //Arrange
+            Regalia item = new Regalia();
+            item.FlatES = 160;
+            string expected = "That's not an acceptable answer, are you drunk?";
+            //Act
+            string actual = ValidationHelpers.ValidationMessage;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        /*
+        [TestMethod]
+        public void FlatESTooLow()
+        {
+            //Arrange
+            Regalia item = new Regalia();
             //Act
             try
             {
@@ -44,5 +69,6 @@ namespace HybridCalculator.Tests
                 Assert.IsTrue(ex is ArgumentOutOfRangeException);
             }
         }
+    */
     }
 }
