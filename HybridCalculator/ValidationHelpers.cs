@@ -8,17 +8,27 @@ namespace HybridCalculator
 {
     class ValidationHelpers
     {
-        public static int ValidateFlatES(int input, int lowValue, int highValue)
+        //Validation message if intered properties are outside of desired range
+        internal static string ValidationMessage { get; set; }
+
+        public static bool ValidateFlatES(int input, int lowValue, int highValue)
         {
             if (input < lowValue)
             {
-                throw new ArgumentOutOfRangeException("It's garbage, go get some new armour");
+                ValidationMessage = "It's garbage, go get some new armour";
+                //throw new ArgumentOutOfRangeException("It's garbage, go get some new armour");
+                return false;
             }
             else if (input > highValue)
             {
-                throw new ArgumentOutOfRangeException("That's not an acceptable answer, are you drunk?");
+                ValidationMessage = "That's not an acceptable answer, are you drunk?";
+                //throw new ArgumentOutOfRangeException("That's not an acceptable answer, are you drunk?");
+                return false;
             }
-            return input;
+            else
+            {
+                return true;
+            }
         }
     }
 }
