@@ -16,8 +16,6 @@ namespace HybridCalculator
         protected int minFlat { get; set; }
         // maxFlat property
         protected int maxFlat { get; set; }
-        //Validation message if intered properties are outside of desired range
-        public string ValidationMessage { get; private set; }
 
         // BaseES property for different classes
         public int BaseES
@@ -27,7 +25,14 @@ namespace HybridCalculator
         {
             get { return _flatES; }
             //Validation to make sure FlatES is within desired range
-            set {_flatES = ValidationHelpers.ValidateFlatES(value, minFlat, maxFlat);}
+            set
+            {
+                if (ValidationHelpers.ValidateFlatES(value, minFlat, maxFlat))
+                    _flatES = value;
+                else
+                    Console.WriteLine(ValidationHelpers.ValidationMessage);
+                Console.ReadKey();
+            }
         }
         #endregion
 
