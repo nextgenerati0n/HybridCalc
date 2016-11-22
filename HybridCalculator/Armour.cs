@@ -8,15 +8,18 @@ namespace HybridCalculator
         #region Properties
         // To store tier information
         protected Dictionary<int, int> flatTiers;
-        // To store the baseES of each different item
-        protected int _baseES;
         // To store the FlatES for calculations to determine maximum FlatES value
         protected int _flatES;
         // minFlat property
         protected int minFlat { get; set; }
         // maxFlat property
         protected int maxFlat { get; set; }
-
+        // Declares whether the item is hybrid or not ** not used in logic at the time **
+        public bool Hybrid { get; set; }
+        // To store the maximum Increased ES of an item ** not used in logic at the time **
+        public int MaxIncES { get; set; }
+        // To store the baseES of each different item 
+        protected int _baseES;
         // BaseES property for different classes
         public int BaseES
         { get { return _baseES; } }
@@ -61,9 +64,9 @@ namespace HybridCalculator
         {
             // set the base ES value
             _baseES = 175;
-            // if the value < 49, it is shit
+            // if the value < 73, it is shit
             minFlat = 73;
-            // if the value > 78, it is non existant technically
+            // if the value > 152, it is non existant technically
             maxFlat = 152;
             // init the dictionary to save the flat tiers in.
             flatTiers = new Dictionary<int, int>();
@@ -82,7 +85,7 @@ namespace HybridCalculator
         {
             // set the base ES value
             _baseES = 100;
-            // if the value < 49, it is shit
+            // if the value < 30, it is shit
             minFlat = 30;
             // if the value > 78, it is non existant technically
             maxFlat = 78;
