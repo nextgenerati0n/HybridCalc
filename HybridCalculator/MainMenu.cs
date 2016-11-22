@@ -61,22 +61,24 @@ namespace HybridCalculator
             string hybridChoice = Console.ReadLine();
             return hybridChoice;
         }
-        public bool HasStunRecovery(string stunChoice)
+        public void HasStunRecovery(string stunChoice)
         {
             if (stunChoice == "y")
             {
+                item.Hybrid = true;
                 CalculateHybrid.Calculate(item.BaseES, item.FlatES);
-                return true;
+                //return true;
             }
             else if (stunChoice == "n")
             {
+                item.Hybrid = false;
                 DetermineIncreasedES.Calculate(item.BaseES, item.FlatES);
-                return false;
+                //return false;
             }
             else
             {
                 Console.WriteLine("That was a simple choice between 'y' and 'n', try again dummy!");
-                return false;
+                //return false;
             }
         }
     }
