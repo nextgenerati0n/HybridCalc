@@ -12,7 +12,7 @@ namespace HybridCalculator
         {
             Console.Write("What is the Roll for % Increased Stun Recovery? "); //Asks for user to input a stun roll to determine the min/max Increased Energy Shield
             int stunRoll = int.Parse(Console.ReadLine());
-            bool isHybrid = false;
+            bool isHybrid;
             int minHybridRoll = 0;
             int maxHybridRoll = 0;
 
