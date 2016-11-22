@@ -8,8 +8,7 @@ namespace HybridCalculator
         #region Properties
         // To store tier information
         protected Dictionary<int, int> flatTiers;
-        // To store the FlatES for calculations to determine maximum FlatES value
-        protected int _flatES;
+
         // minFlat property
         protected int minFlat { get; set; }
         // maxFlat property
@@ -23,6 +22,8 @@ namespace HybridCalculator
         // BaseES property for different classes
         public int BaseES
         { get { return _baseES; } }
+        // FlatES backing field
+        protected int _flatES;
         // flatES property
         public int FlatES
         {
