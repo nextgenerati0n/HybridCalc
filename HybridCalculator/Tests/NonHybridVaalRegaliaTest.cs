@@ -26,14 +26,16 @@ namespace HybridCalculator.Tests
         public void NonHybridRegaliaHasStun()
         {
             //Arrange
-            Regalia item = new Regalia();
-            MainMenu menu = new MainMenu();
-            int flatES = 140;
-            int maxFlatES = item.FlatTiers(flatES);
+
+            var item = new Regalia();
+            var menu = new MainMenu();
+            //int flatES = 140;
+            //int maxFlatES = item.FlatTiers(flatES);
             string stunChoice = "n";
+            menu.HasStunRecovery(stunChoice);
             bool expected = false;
             //Act
-            bool actual = menu.HasStunRecovery(stunChoice);
+            bool actual = item.Hybrid;
             //Assert
             Assert.AreEqual(expected, actual);
         }
