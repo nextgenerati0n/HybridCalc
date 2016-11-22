@@ -31,11 +31,10 @@ namespace HybridCalculator
             //Validation to make sure FlatES is within desired range
             set
             {
-                if (ValidationHelpers.ValidateFlatES(value, minFlat, maxFlat))
+                if (Helpers.ValidateFlatES(value, minFlat, maxFlat))
                     _flatES = value;
                 else
-                    Console.WriteLine(ValidationHelpers.ValidationMessage);
-                Console.ReadKey();
+                    Console.WriteLine(Helpers.ValidationMessage);
             }
         }
         #endregion
@@ -47,7 +46,7 @@ namespace HybridCalculator
                 if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     FlatES = i.Key;
-                    ThisIsTier.Desc(i.Value);
+                    Helpers.Desc(i.Value);
                     break;
                 }
             return FlatES;

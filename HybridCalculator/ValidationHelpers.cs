@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HybridCalculator
 {
-    class ValidationHelpers
+    class Helpers
     {
         //Validation message if intered properties are outside of desired range
         internal static string ValidationMessage { get; set; }
@@ -30,5 +30,16 @@ namespace HybridCalculator
                 return true;
             }
         }
+
+        public static void Desc(int tier)
+        {
+            Console.WriteLine($"This is tier {tier}");
+        }
+
+        public static void HybridDesc(int tier, string name)
+        {
+            Console.WriteLine($"\nThe hybrid roll is tier  {tier}: {name}");
+        }
+
     }
 }
