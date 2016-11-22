@@ -18,7 +18,7 @@ namespace HybridCalculator.Tests
             item.FlatES = 10;
             string expected = "It's garbage, go get some new armour";
             //Act
-            string actual = ValidationHelpers.ValidationMessage;
+            string actual = Helpers.ValidationMessage;
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -28,9 +28,9 @@ namespace HybridCalculator.Tests
             //Arrange
             Regalia item = new Regalia();
             item.FlatES = 160;
-            string expected = "It's garbage, go get some new armour";
+            string expected = "That's not an acceptable answer, are you drunk?";
             //Act
-            string actual = ValidationHelpers.ValidationMessage;
+            string actual = Helpers.ValidationMessage;
             //Assert
             Assert.AreEqual(expected, actual);
         }

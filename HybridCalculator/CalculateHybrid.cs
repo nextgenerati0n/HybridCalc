@@ -42,7 +42,7 @@ namespace HybridCalculator
             //    else if (stunRoll <= stunTiers[0,i,0])
             //    {
             //        stunRoll = stunTiers[0, i, 0];
-            //        //ThisIsTier.Desc(i.Value);
+            //        //Helpers.Desc(i.Value);
             //        break;
             //    }
 
@@ -69,42 +69,42 @@ namespace HybridCalculator
                 isHybrid = true;
                 minHybridRoll = 6;
                 maxHybridRoll = 14;
-                ThisIsTier.HybridDesc(6, "Pixie's");
+                Helpers.HybridDesc(6, "Pixie's");
             }
             else if (stunRoll <= 9)
             {
                 isHybrid = true;
                 minHybridRoll = 15;
                 maxHybridRoll = 23;
-                ThisIsTier.HybridDesc(5, "Gremlin's");
+                Helpers.HybridDesc(5, "Gremlin's");
             }
             else if (stunRoll <= 11)
             {
                 isHybrid = true;
                 minHybridRoll = 24;
                 maxHybridRoll = 32;
-                ThisIsTier.HybridDesc(4, "Boggart's");
+                Helpers.HybridDesc(4, "Boggart's");
             }
             else if (stunRoll <= 13)
             {
                 isHybrid = true;
                 minHybridRoll = 33;
                 maxHybridRoll = 41;
-                ThisIsTier.HybridDesc(3, "Naga's");
+                Helpers.HybridDesc(3, "Naga's");
             }
             else if (stunRoll <= 15)
             {
                 isHybrid = true;
                 minHybridRoll = 42;
                 maxHybridRoll = 50;
-                ThisIsTier.HybridDesc(2, "Djinn's");
+                Helpers.HybridDesc(2, "Djinn's");
             }
             else if (stunRoll <= 17)
             {
                 isHybrid = true;
                 minHybridRoll = 51;
                 maxHybridRoll = 56;
-                ThisIsTier.HybridDesc(1, "Seraphim's");
+                Helpers.HybridDesc(1, "Seraphim's");
             }
             else if (stunRoll <= 28)
             {
@@ -119,7 +119,7 @@ namespace HybridCalculator
                 Calculate(baseES, flatES);
             }
             //Takes the values forward to determine Increased Enegry Shield value
-            DetermineIncreasedES.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
+            MainMenu.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
         }
     }
 }
