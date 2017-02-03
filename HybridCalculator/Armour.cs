@@ -1,14 +1,19 @@
-﻿using System;
+﻿using HybridCalculator;
+using System;
 using System.Collections.Generic;
 
 namespace HybridCalculator
 {
-    abstract class Armour
+    public class Armour
     {
         #region Properties
         // To store tier information
-        protected Dictionary<int, int> flatTiers;
-
+        public int[] minFlatTierArray { get; private set; }
+        public int[] maxFlatTierArray;
+        public SortedList<int, int> flatTiers;
+        public int FlatEsTier { get; set; }
+        public int MinFlatEs { get; set; }
+        public int MaxFlatEs { get; set; }
         // minFlat property
         protected int minFlat { get; set; }
         // maxFlat property
@@ -24,6 +29,8 @@ namespace HybridCalculator
         { get { return _baseES; } }
         // FlatES backing field
         protected int _flatES;
+
+
         // flatES property
         public int FlatES
         {
@@ -39,22 +46,9 @@ namespace HybridCalculator
         }
         #endregion
 
-        public int FlatTiers(int flatES)
+        public void FlatTiers(int flatES)
         {
-            // If FlatES is within desired range and it is worth looping over the tier dictionary, do so
-            foreach (KeyValuePair<int, int> i in flatTiers)
-                if (flatES <= i.Key) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
-                {
-                    FlatES = i.Key;
-                    Helpers.Desc(i.Value);
-                    break;
-                }
-            return FlatES;
-        }
-
-        public void AddGrade(int es, int tier)
-        {
-            flatTiers.Add(es, tier);
+            ArmourRepository.RetrieveFlatEs(this);
         }
     }
 
@@ -69,13 +63,15 @@ namespace HybridCalculator
             // if the value > 152, it is non existant technically
             maxFlat = 152;
             // init the dictionary to save the flat tiers in.
-            flatTiers = new Dictionary<int, int>();
+            int[] minFlatTierArray = { 136, 107, 73, 49, 30 };
+            int[] maxFlatTierArray = { 145, 135, 106, 72, 48 };
+            flatTiers = new SortedList<int, int>();
 
             // Add the flat tier values into our dictionary.
-            flatTiers.Add(106, 3);
-            flatTiers.Add(135, 2);
-            flatTiers.Add(145, 1);
-            flatTiers.Add(152, 0);
+            flatTiers.Add(152, 146);
+            flatTiers.Add(145, 136);
+            flatTiers.Add(135, 107);
+            flatTiers.Add(106, 73);
         }
     }
 
@@ -90,7 +86,7 @@ namespace HybridCalculator
             // if the value > 78, it is non existant technically
             maxFlat = 78;
             // init the dictionary to save the flat tiers in.
-            flatTiers = new Dictionary<int, int>();
+            flatTiers = new SortedList<int, int>();
 
             // Input the flat tier values
             flatTiers.Add(48, 2);
@@ -110,7 +106,7 @@ namespace HybridCalculator
             // if the value > 141, it is non existant technically
             maxFlat = 141;
             // init the flattiers dictionary
-            flatTiers = new Dictionary<int, int>();
+            flatTiers = new SortedList<int, int>();
 
             // Add the flat tier values
             flatTiers.Add(72, 3);

@@ -24,7 +24,7 @@ namespace HybridCalculator
                     break;
             }
             //Get the current flat ES value
-            item.FlatES = EnterESValue();
+            item.FlatES = EnterFlatEsValue();
             //Determine what the maximum potential ES value is and return it
             item.FlatTiers(item.FlatES);
             //Ask if armour has stun recovery or not
@@ -48,7 +48,7 @@ namespace HybridCalculator
             return int.Parse(Console.ReadLine());
         }
 
-        private int EnterESValue()
+        private int EnterFlatEsValue()
         {
             Console.Clear();
             Console.Write("Enter the Increased Flat Energy Shield value: ");
