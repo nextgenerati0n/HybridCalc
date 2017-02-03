@@ -24,13 +24,15 @@ namespace HybridCalculator
                     break;
             }
             //Get the current flat ES value
-            item.FlatES = EnterFlatEsValue();
+            item.FlatEs = EnterFlatEsValue();
             //Determine what the maximum potential ES value is and return it
-            item.FlatTiers(item.FlatES);
+            item.FlatTiers(item.FlatEs);
             //Ask if armour has stun recovery or not
             string stunChoice = EnterStunChoice();
+            item.IncEs = EnterIncEsValue();
             //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
             HasStunRecovery(stunChoice);
+            MinMaxES.Calculate(item);
             
         }
 
@@ -61,18 +63,24 @@ namespace HybridCalculator
             string hybridChoice = Console.ReadLine();
             return hybridChoice;
         }
+        private int EnterIncEsValue()
+        {
+            Console.Write("What is the maximum increased ES: ");
+            int incES = int.Parse(Console.ReadLine());
+            return incES;
+        }
         public void HasStunRecovery(string stunChoice)
         {
             if (stunChoice == "y")
             {
                 item.Hybrid = true;
-                Calculate(item.BaseES, item.FlatES);
+                Calculate(item.BaseES, item.FlatEs);
                 //return true;
             }
             else if (stunChoice == "n")
             {
                 item.Hybrid = false;
-                Calculate(item.BaseES, item.FlatES);
+                ArmourRepository.RetrieveIncEs(item);
                 //return false;
             }
             else
@@ -133,7 +141,7 @@ namespace HybridCalculator
 
                 Console.ReadKey();
             }
-            MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES);
+            //MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES);
         }
 
         public static void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll)

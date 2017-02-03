@@ -8,38 +8,52 @@ namespace HybridCalculator
     {
         #region Properties
         // To store tier information
-        public int[] minFlatTierArray { get; private set; }
-        public int[] maxFlatTierArray;
         public SortedList<int, int> flatTiers;
+        //Properties to store the Flat ES tier and the potential min/max Flat ES values of the item
         public int FlatEsTier { get; set; }
         public int MinFlatEs { get; set; }
         public int MaxFlatEs { get; set; }
-        // minFlat property
+        //Properties to store the Increased ES tier and the potential min/max Increased ES values of the item
+        public int IncEsTier { get; set; }
+        public int MinIncEs { get; set; }
+        public int MaxIncEs { get; set; }
+        // minFlat property to set the lowest allowable value on an item
         protected int minFlat { get; set; }
-        // maxFlat property
+        // maxFlat property to set the highest allowable value on an item
         protected int maxFlat { get; set; }
         // Declares whether the item is hybrid or not ** not used in logic at the time **
         public bool Hybrid { get; set; }
-        // To store the maximum Increased ES of an item ** not used in logic at the time **
-        public int MaxIncES { get; set; }
         // To store the baseES of each different item 
         protected int _baseES;
         // BaseES property for different classes
         public int BaseES
         { get { return _baseES; } }
         // FlatES backing field
-        protected int _flatES;
+        protected int _flatEs;
+        protected int _incEs;
 
 
         // flatES property
-        public int FlatES
+        public int FlatEs
         {
-            get { return _flatES; }
+            get { return _flatEs; }
             //Validation to make sure FlatES is within desired range
             set
             {
-                if (Helpers.ValidateFlatES(value, minFlat, maxFlat))
-                    _flatES = value;
+                if (Helpers.ValidateES(value, minFlat, maxFlat))
+                    _flatEs = value;
+                else
+                    Console.WriteLine(Helpers.ValidationMessage);
+            }
+        }
+        public int IncEs
+        {
+            get { return _incEs; }
+            //Validation to make sure FlatES is within desired range
+            set
+            {
+                if (Helpers.ValidateES(value, 65, 132))
+                    _incEs = value;
                 else
                     Console.WriteLine(Helpers.ValidationMessage);
             }
@@ -49,6 +63,10 @@ namespace HybridCalculator
         public void FlatTiers(int flatES)
         {
             ArmourRepository.RetrieveFlatEs(this);
+        }
+        public void IncTiers(int incES)
+        {
+            ArmourRepository.RetrieveIncEs(this);
         }
     }
 
@@ -63,9 +81,7 @@ namespace HybridCalculator
             // if the value > 152, it is non existant technically
             maxFlat = 152;
             // init the dictionary to save the flat tiers in.
-            int[] minFlatTierArray = { 136, 107, 73, 49, 30 };
-            int[] maxFlatTierArray = { 145, 135, 106, 72, 48 };
-            flatTiers = new SortedList<int, int>();
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
 
             // Add the flat tier values into our dictionary.
             flatTiers.Add(152, 146);
@@ -86,7 +102,7 @@ namespace HybridCalculator
             // if the value > 78, it is non existant technically
             maxFlat = 78;
             // init the dictionary to save the flat tiers in.
-            flatTiers = new SortedList<int, int>();
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
 
             // Input the flat tier values
             flatTiers.Add(48, 2);
@@ -106,7 +122,7 @@ namespace HybridCalculator
             // if the value > 141, it is non existant technically
             maxFlat = 141;
             // init the flattiers dictionary
-            flatTiers = new SortedList<int, int>();
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
 
             // Add the flat tier values
             flatTiers.Add(72, 3);

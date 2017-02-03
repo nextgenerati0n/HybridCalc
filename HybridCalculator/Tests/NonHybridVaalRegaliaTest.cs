@@ -23,22 +23,33 @@ namespace HybridCalculator.Tests
             //Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void NonHybridRegaliaHasStun()
+        public void IncreasedEsTierTest()
         {
             //Arrange
-
             var item = new Regalia();
-            var menu = new MainMenu();
-            //int flatES = 140;
-            //int maxFlatES = item.FlatTiers(flatES);
-            string stunChoice = "n";
-            menu.HasStunRecovery(stunChoice);
-            bool expected = false;
+            item.IncEs = 125;
+            ArmourRepository.RetrieveIncEs(item);
+            var expected = 1;
             //Act
-            bool actual = item.Hybrid;
+            var actual = item.IncEsTier;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void FlatEsTierTest()
+        {
+            //Arrange
+            var item = new Regalia();
+            item.FlatEs = 125;
+            ArmourRepository.RetrieveFlatEs(item);
+            var expected = 2;
+            //Act
+            var actual = item.FlatEsTier;
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
     }
-
 }
+

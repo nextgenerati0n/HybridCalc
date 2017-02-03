@@ -4,10 +4,10 @@ namespace HybridCalculator
 {
     class MinMaxES
     {
-        public static void Calculate(int minIncES, int maxIncES, int baseES, int flatES)
+        public static void Calculate(Armour armour)
         {
-            float minES = (int)Math.Round((baseES + flatES) * ((minIncES + 20f) / 100)) + (baseES + flatES);
-            float maxES = (int)Math.Round((baseES + flatES) * ((maxIncES + 20f) / 100)) + (baseES + flatES);
+            float minES = (int)Math.Round((armour.BaseES + armour.MinFlatEs) * ((armour.MinIncEs + 20f) / 100)) + (armour.BaseES + armour.MinFlatEs);
+            float maxES = (int)Math.Round((armour.BaseES + armour.MaxFlatEs) * ((armour.MaxIncEs + 20f) / 100)) + (armour.BaseES + armour.MaxFlatEs);
             MinMaxDesc("min", minES);
             MinMaxDesc("max", maxES);
             StartAgain();

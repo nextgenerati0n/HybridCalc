@@ -11,7 +11,7 @@ namespace HybridCalculator
         //Validation message if intered properties are outside of desired range
         internal static string ValidationMessage { get; set; }
 
-        public static bool ValidateFlatES(int input, int lowValue, int highValue)
+        public static bool ValidateES(int input, int lowValue, int highValue)
         {
             if (input < lowValue)
             {
