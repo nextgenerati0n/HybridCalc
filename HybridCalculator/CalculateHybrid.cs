@@ -119,7 +119,7 @@ namespace HybridCalculator
                 Calculate(baseES, flatES);
             }
 
-            MinMaxES.Calculate(this);
+            //MinMaxES.Calculate(this);
         }
     }
 }

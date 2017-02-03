@@ -66,7 +66,27 @@ namespace HybridCalculator
                     Helpers.Desc(tier);
                     break;
                 }
-            RetrieveHybridEs(armour);
+
+            SortedList<int, int> hybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
+
+            // Input the tier values
+            hybridTiers.Add(56, 51);
+            hybridTiers.Add(50, 42);
+            hybridTiers.Add(41, 33);
+            hybridTiers.Add(32, 21);
+            hybridTiers.Add(23, 15);
+            hybridTiers.Add(14, 6);
+
+            foreach (KeyValuePair<int, int> i in hybridTiers)
+                if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                {
+                    armour.MinHybridEs = i.Value;
+                    armour.MaxHybridEs = i.Key;
+                    int tier = (hybridTiers.IndexOfValue(i.Value) + 1);
+                    armour.HybridEsTier = tier;
+                    Helpers.Desc(tier);
+                    break;
+                }
         }
 
         public static void RetrieveHybridEs(Armour armour)

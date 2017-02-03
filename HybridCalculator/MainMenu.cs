@@ -74,7 +74,7 @@ namespace HybridCalculator
             if (stunChoice == "y")
             {
                 item.Hybrid = true;
-                CalculateHybrid.Calculate(item.BaseES, item.FlatEs);
+                ArmourRepository.RetrieveIncEs(item);
                 //return true;
             }
             else if (stunChoice == "n")
