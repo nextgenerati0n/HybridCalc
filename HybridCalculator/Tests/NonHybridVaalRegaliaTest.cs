@@ -11,18 +11,6 @@ namespace HybridCalculator.Tests
     public class ChestTests
     {
         [TestMethod]
-        public void NonHybridRegaliaFlatESTier1()
-        {
-            //Arrange
-            Regalia item = new Regalia();
-            int flatES = 140;
-            int expected = 145;
-            //Act
-            //int actual = item.FlatTiers(flatES);
-            //Assert
-            //Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
         public void IncreasedEsTierTest()
         {
             //Arrange

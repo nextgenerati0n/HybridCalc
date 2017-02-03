@@ -17,6 +17,14 @@ namespace HybridCalculator
         public int IncEsTier { get; set; }
         public int MinIncEs { get; set; }
         public int MaxIncEs { get; set; }
+        //Properties to store the Hybrid ES tier and the potential min/max Hybrid ES values of the item
+        public int HybridEsTier { get; set; }
+        public int MinHybridEs { get; set; }
+        public int MaxHybridEs { get; set; }
+        //Properties to store the Stun Recovery tier and the potential min/max Stun Recovery values of the item
+        public int StunRecoveryTier { get; set; }
+        public int MinStunRecoveryRoll { get; set; }
+        public int MaxStunRecoveryRoll { get; set; }
         // minFlat property to set the lowest allowable value on an item
         protected int minFlat { get; set; }
         // maxFlat property to set the highest allowable value on an item

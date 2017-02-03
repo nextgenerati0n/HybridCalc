@@ -8,7 +8,7 @@ namespace HybridCalculator
 {
     class CalculateHybrid
     {
-        public static void Calculate(int baseES, int flatES)
+        public void Calculate(int baseES, int flatES)
         {
             Console.Write("What is the Roll for % Increased Stun Recovery? "); //Asks for user to input a stun roll to determine the min/max Increased Energy Shield
             int stunRoll = int.Parse(Console.ReadLine());
@@ -118,8 +118,8 @@ namespace HybridCalculator
                 Console.WriteLine("Are you sure you can even read?");
                 Calculate(baseES, flatES);
             }
-            //Takes the values forward to determine Increased Enegry Shield value
-            MainMenu.Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
+
+            MinMaxES.Calculate(this);
         }
     }
 }

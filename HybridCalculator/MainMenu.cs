@@ -74,7 +74,7 @@ namespace HybridCalculator
             if (stunChoice == "y")
             {
                 item.Hybrid = true;
-                Calculate(item.BaseES, item.FlatEs);
+                CalculateHybrid.Calculate(item.BaseES, item.FlatEs);
                 //return true;
             }
             else if (stunChoice == "n")
@@ -89,7 +89,7 @@ namespace HybridCalculator
                 //return false;
             }
         }
-
+/*
         public static void Calculate(int baseES, int flatES)
         {
             //Ask the user to input their current Increased Energy Shield value
@@ -143,14 +143,14 @@ namespace HybridCalculator
             }
             //MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES);
         }
-
-        public static void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll)
+*/
+        public void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll)
         {
             //Ask the user to input their current Increased Energy Shield value
             Console.Write("What is the maximum increased ES: ");
             int incES = int.Parse(Console.ReadLine());
-            int maxIncES = incES - minHybridRoll;
-            int minIncES = incES - maxHybridRoll;
+            int maxIncES = item.IncEs - minHybridRoll;
+            int minIncES = item.IncEs - maxHybridRoll;
 
             if (maxIncES < 65 || minIncES < 65)
             {
