@@ -15,7 +15,7 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             Regalia item = new Regalia();
-            item.FlatEs = 10;
+            item.FlatEsRoll = 10;
             string expected = "It's garbage, go get some new armour";
             //Act
             string actual = Helpers.ValidationMessage;
@@ -27,7 +27,7 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             Regalia item = new Regalia();
-            item.FlatEs = 160;
+            item.FlatEsRoll = 160;
             string expected = "That's not an acceptable answer, are you drunk?";
             //Act
             string actual = Helpers.ValidationMessage;

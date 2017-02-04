@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HybridCalculator
+/*namespace HybridCalculator
 {
     class CalculateHybrid
     {
@@ -123,3 +123,4 @@ namespace HybridCalculator
         }
     }
 }
+*/

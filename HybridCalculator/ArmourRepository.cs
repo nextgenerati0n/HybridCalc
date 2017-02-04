@@ -11,7 +11,7 @@ namespace HybridCalculator
         public static void RetrieveFlatEs(Armour armour)
         {
             foreach (KeyValuePair<int, int> i in armour.flatTiers)
-                if (armour.FlatEs >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                if (armour.FlatEsRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     armour.MinFlatEs = i.Value;
                     armour.MaxFlatEs = i.Key;
@@ -33,7 +33,7 @@ namespace HybridCalculator
             incTiers.Add(82, 65);
 
             foreach (KeyValuePair<int, int> i in incTiers)
-                if (armour.IncEs >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                if (armour.IncEsRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     armour.MinIncEs = i.Value;
                     armour.MaxIncEs = i.Key;
@@ -57,10 +57,10 @@ namespace HybridCalculator
             stunRecoveryTiers.Add(6, 7);
 
             foreach (KeyValuePair<int, int> i in stunRecoveryTiers)
-                if (armour.IncEs >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
-                    armour.MinStunRecoveryRoll = i.Value;
-                    armour.MaxStunRecoveryRoll = i.Key;
+                    armour.MinStunRecovery = i.Value;
+                    armour.MaxStunRecovery = i.Key;
                     int tier = (stunRecoveryTiers.IndexOfValue(i.Value) + 1);
                     armour.StunRecoveryTier = tier;
                     Helpers.Desc(tier);
@@ -77,16 +77,20 @@ namespace HybridCalculator
             hybridTiers.Add(23, 15);
             hybridTiers.Add(14, 6);
 
-            foreach (KeyValuePair<int, int> i in hybridTiers)
-                if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
-                {
-                    armour.MinHybridEs = i.Value;
-                    armour.MaxHybridEs = i.Key;
-                    int tier = (hybridTiers.IndexOfValue(i.Value) + 1);
-                    armour.HybridEsTier = tier;
-                    Helpers.Desc(tier);
-                    break;
-                }
+            armour.MinHybridEs = hybridTiers.Values[armour.StunRecoveryTier -1];
+            armour.MaxHybridEs = hybridTiers.Keys[armour.StunRecoveryTier -1];
+            armour.HybridEsTier = armour.StunRecoveryTier;
+
+            //foreach (KeyValuePair<int, int> i in hybridTiers)
+            //    if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+            //    {
+            //        armour.MinHybridEs = i.Value;
+            //        armour.MaxHybridEs = i.Key;
+            //        int tier = (hybridTiers.IndexOfValue(i.Value) + 1);
+            //        armour.HybridEsTier = tier;
+            //        Helpers.Desc(tier);
+            //        break;
+            //    }
         }
 
         public static void RetrieveHybridEs(Armour armour)
@@ -102,7 +106,7 @@ namespace HybridCalculator
             HybridTiers.Add(14, 6);
 
             foreach (KeyValuePair<int, int> i in HybridTiers)
-                if (armour.IncEs >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                if (armour.IncEsRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     armour.MinHybridEs = i.Value;
                     armour.MaxHybridEs = i.Key;

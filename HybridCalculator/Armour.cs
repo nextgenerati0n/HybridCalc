@@ -19,8 +19,8 @@ namespace HybridCalculator
         public int MaxIncEs { get; set; }
         //Properties to store the Stun Recovery tier and the potential min/max Stun Recovery values of the item
         public int StunRecoveryTier { get; set; }
-        public int MinStunRecoveryRoll { get; set; }
-        public int MaxStunRecoveryRoll { get; set; }
+        public int MinStunRecovery { get; set; }
+        public int MaxStunRecovery { get; set; }
         //Properties to store the Hybrid ES tier and the potential min/max Hybrid ES values of the item
         public int HybridEsTier { get; set; }
         public int MinHybridEs { get; set; }
@@ -30,40 +30,40 @@ namespace HybridCalculator
         // maxFlat property to set the highest allowable value on an item
         protected int maxFlat { get; set; }
         // Declares whether the item is hybrid or not ** not used in logic at the time **
-        public bool Hybrid { get; set; }
+        public bool IsHybrid { get; set; }
         // To store the baseES of each different item 
         protected int _baseES;
         // BaseES property for different classes
         public int BaseES
         { get { return _baseES; } }
-        // FlatES backing field
-        protected int _flatEs;
-        protected int _incEs;
+        // Backing fields for user enterable values
+        protected int _flatEsRoll;
+        protected int _incEsRoll;
         protected int _stunRecoveryRoll;
         protected int _hybridRoll;
 
 
-        // flatES property
-        public int FlatEs
+        // Properties for user enterable values
+        public int FlatEsRoll
         {
-            get { return _flatEs; }
+            get { return _flatEsRoll; }
             //Validation to make sure FlatES is within desired range
             set
             {
                 if (Helpers.ValidateES(value, minFlat, maxFlat))
-                    _flatEs = value;
+                    _flatEsRoll = value;
                 else
                     Console.WriteLine(Helpers.ValidationMessage);
             }
         }
-        public int IncEs
+        public int IncEsRoll
         {
-            get { return _incEs; }
+            get { return _incEsRoll; }
             //Validation to make sure FlatES is within desired range
             set
             {
-                if (Helpers.ValidateES(value, 65, 132))
-                    _incEs = value;
+                if (Helpers.ValidateES(value, 65, 189))
+                    _incEsRoll = value;
                 else
                     Console.WriteLine(Helpers.ValidationMessage);
             }
@@ -82,15 +82,16 @@ namespace HybridCalculator
         }
         #endregion
 
-        public void FlatTiers(int flatES)
+        //Funcrions to determine the min/max values based on the what the user entered
+        public void FlatTiers()
         {
             ArmourRepository.RetrieveFlatEs(this);
         }
-        public void IncTiers(int incES)
+        public void IncEsTiers()
         {
             ArmourRepository.RetrieveIncEs(this);
         }
-        public void StunRecoveryTiers(int incES)
+        public void StunRecoveryTiers()
         {
             ArmourRepository.RetrieveStunRecovery(this);
         }

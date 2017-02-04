@@ -15,7 +15,7 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             var item = new Regalia();
-            item.IncEs = 125;
+            item.IncEsRoll = 125;
             ArmourRepository.RetrieveIncEs(item);
             var expected = 1;
             //Act
@@ -29,7 +29,7 @@ namespace HybridCalculator.Tests
         {
             //Arrange
             var item = new Regalia();
-            item.FlatEs = 125;
+            item.FlatEsRoll = 125;
             ArmourRepository.RetrieveFlatEs(item);
             var expected = 2;
             //Act

@@ -2,7 +2,7 @@
 
 namespace HybridCalculator
 {
-    class MainMenu
+    public class MainMenu
     {
         // Armour object to determine the baseES with
         Armour item;
@@ -23,15 +23,19 @@ namespace HybridCalculator
                     item = new SpiritShield();
                     break;
             }
-            //Get the current flat ES value
-            item.FlatEs = EnterFlatEsValue();
-            //Determine what the maximum potential ES value is and return it
-            item.FlatTiers(item.FlatEs);
+            //Get the current flat ES value of the item
+            item.FlatEsRoll = EnterFlatEsValue();
+            //Determine what the maximum potential Flat ES value is and return it
+            item.FlatTiers();
             //Ask if armour has stun recovery or not
             string stunChoice = EnterStunChoice();
-            item.IncEs = EnterIncEsValue();
             //If the value is outside of the acceptable range then return to main menu, else  determine stun recovery value
             HasStunRecovery(stunChoice);
+            //Get the current Increased ES value of the item
+            item.IncEsRoll = EnterIncEsValue();
+            //Determine what the maximum potential Increased ES value is and return it
+            item.IncEsTiers();
+
             MinMaxES.Calculate(item);
             
         }
@@ -59,7 +63,7 @@ namespace HybridCalculator
         }
         private string EnterStunChoice()
         {
-            Console.Write("Does the item have an '% Increased Stun Recovery' value: y/n ");
+            Console.Write("Does the item have an '% Increased Stun Recovery' value. y/n: ");
             string hybridChoice = Console.ReadLine();
             return hybridChoice;
         }
@@ -69,18 +73,25 @@ namespace HybridCalculator
             int incES = int.Parse(Console.ReadLine());
             return incES;
         }
-        public void HasStunRecovery(string stunChoice)
+        private int EnterStunRecoveryValue()
+        {
+            Console.Write("What is the Roll for % Increased Stun Recovery: ");
+            int stunRoll = int.Parse(Console.ReadLine());
+            return stunRoll;
+        }
+        private void HasStunRecovery(string stunChoice)
         {
             if (stunChoice == "y")
             {
-                item.Hybrid = true;
-                ArmourRepository.RetrieveIncEs(item);
+                item.IsHybrid = true;
+                item.StunRecoveryRoll = EnterStunRecoveryValue();
+                item.StunRecoveryTiers();
+                Calculate();
                 //return true;
             }
             else if (stunChoice == "n")
             {
-                item.Hybrid = false;
-                ArmourRepository.RetrieveIncEs(item);
+                item.IsHybrid = false;
                 //return false;
             }
             else
@@ -144,13 +155,13 @@ namespace HybridCalculator
             //MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES);
         }
 */
-        public void Calculate(int baseES, int flatES, int minHybridRoll, int maxHybridRoll)
+        public void Calculate()
         {
             //Ask the user to input their current Increased Energy Shield value
             Console.Write("What is the maximum increased ES: ");
-            int incES = int.Parse(Console.ReadLine());
-            int maxIncES = item.IncEs - minHybridRoll;
-            int minIncES = item.IncEs - maxHybridRoll;
+            item.IncEsRoll = int.Parse(Console.ReadLine());
+            int maxIncES = item.IncEsRoll - item.MinHybridEs;
+            int minIncES = item.IncEsRoll - item.MaxHybridEs;
 
             if (maxIncES < 65 || minIncES < 65)
             {
@@ -160,26 +171,26 @@ namespace HybridCalculator
             }
             else if (maxIncES <= 82 && minIncES > 65)
             {
-                minIncES = 65;
-                maxIncES = 82;
+                item.MinIncEs = 65;
+                item.MaxIncEs = 82;
                 Helpers.Desc(4);
             }
             else if (maxIncES <= 100 && minIncES > 82)
             {
-                minIncES = 83;
-                maxIncES = 100;
+                item.MinIncEs = 83;
+                item.MaxIncEs = 100;
                 Helpers.Desc(3);
             }
             else if (maxIncES <= 120 && minIncES > 100)
             {
-                minIncES = 101;
-                maxIncES = 120;
+                item.MinIncEs = 101;
+                item.MaxIncEs = 120;
                 Helpers.Desc(2);
             }
             else if (maxIncES <= 132 && minIncES > 120)
             {
-                minIncES = 121;
-                maxIncES = 132;
+                item.MinIncEs = 121;
+                item.MaxIncEs = 132;
                 Helpers.Desc(1);
             }
             else
@@ -189,13 +200,13 @@ namespace HybridCalculator
                 string choice = Console.ReadLine();
 
                 if (choice == "1")
-                    Calculate(baseES, flatES, minHybridRoll, maxHybridRoll);
+                    Calculate();
                 else
                     return;
 
                 Console.ReadKey();
             }
-            MinMaxES.Calculate(minIncES, maxIncES, baseES, flatES, minHybridRoll, maxHybridRoll);
+            MinMaxES.Calculate(item);
         }
     }
 }
