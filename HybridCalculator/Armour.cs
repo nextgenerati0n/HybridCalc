@@ -17,6 +17,10 @@ namespace HybridCalculator
         public int IncEsTier { get; set; }
         public int MinIncEs { get; set; }
         public int MaxIncEs { get; set; }
+        //Properties to store the alternate Increased ES tier in case it is between 2 possbile tiers
+        public int AltIncEsTier { get; set; }
+        public int AltMinIncEs { get; set; }
+        public int AltMaxIncEs { get; set; }
         //Properties to store the Stun Recovery tier and the potential min/max Stun Recovery values of the item
         public int StunRecoveryTier { get; set; }
         public int MinStunRecovery { get; set; }

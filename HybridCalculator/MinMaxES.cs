@@ -26,7 +26,6 @@ namespace HybridCalculator
                 MinMaxHybridDesc("max", armour.MaxHybridEs);
                 MinMaxDesc("min", minES);
                 MinMaxDesc("max", maxES);
-                StartAgain();
                 return;
             }
 
@@ -41,7 +40,7 @@ namespace HybridCalculator
         {
             Console.WriteLine($"The {minMax} % Energy Shield that can roll on this item is: {esRoll}");
         }
-        static void StartAgain()
+        public static void StartAgain()
         {
             Console.WriteLine("Press any key to start again");
             Console.ReadKey();

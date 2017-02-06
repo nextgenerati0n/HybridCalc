@@ -38,7 +38,7 @@ namespace HybridCalculator
                     armour.MinIncEs = i.Value;
                     armour.MaxIncEs = i.Key;
                     int tier = (incTiers.IndexOfValue(i.Value) + 1);
-                    armour.IncEsTier = tier;
+                    armour.AltIncEsTier = tier;
                     //Helpers.Desc(tier);
                     break;
                 }
@@ -56,31 +56,31 @@ namespace HybridCalculator
 
             int maxIncES = armour.IncEsRoll - armour.MinHybridEs;
             int minIncES = armour.IncEsRoll - armour.MaxHybridEs;
-            int maxIncEsTier = 0;
-            int minIncEsTier = 0;
 
             foreach (KeyValuePair<int, int> i in incTiers)
                 if (maxIncES >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
                     armour.MaxIncEs = i.Key;
-                    maxIncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
+                    armour.MinIncEs = i.Value;
+                    armour.IncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
                     break;
                 }
             foreach (KeyValuePair<int, int> i in incTiers)
                 if (minIncES >= (i.Value)) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {
-                    armour.MinIncEs = i.Value;
-                    minIncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
+                    armour.AltMaxIncEs = i.Key;
+                    armour.AltMinIncEs = i.Value;
+                    armour.AltIncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
                     break;
                 }
-            if (maxIncEsTier == minIncEsTier)
+            if (armour.IncEsTier == armour.AltIncEsTier)
             {
-                armour.IncEsTier = maxIncEsTier;
-                Helpers.Desc(maxIncEsTier);
+                armour.AltIncEsTier = armour.IncEsTier;
+                Helpers.Desc(armour.IncEsTier);
             }
             else
             {
-                Console.WriteLine($"That could either be Tier: {maxIncEsTier} or Tier: {minIncEsTier} Increased ES, divine and try again");
+                Console.WriteLine($"That could either be Tier: {armour.IncEsTier} or Tier: {armour.AltIncEsTier} Increased ES, divine and try again");
                 Console.ReadKey();
             }
         }
@@ -145,6 +145,16 @@ namespace HybridCalculator
                     Helpers.Desc(tier);
                     break;
                 }
+        }
+
+        public static Armour CreateAltItem(Armour armour)
+        {
+            Armour altArmour = new Armour();
+            altArmour = armour;
+            altArmour.IncEsTier = armour.AltIncEsTier;
+            altArmour.MaxIncEs = armour.AltMaxIncEs;
+            altArmour.MinIncEs = armour.AltMinIncEs;
+            return altArmour;
         }
     }
 }

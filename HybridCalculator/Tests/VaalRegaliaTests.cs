@@ -19,7 +19,7 @@ namespace HybridCalculator.Tests
             ArmourRepository.RetrieveIncEs(item);
             var expected = 1;
             //Act
-            var actual = item.IncEsTier;
+            var actual = item.AltIncEsTier;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -39,7 +39,7 @@ namespace HybridCalculator.Tests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void CalculateHybridIncEsTest()
+        public void CalculateHybridMaxMinIncEsTest()
         {
             //Arrange
             var item = new Regalia();

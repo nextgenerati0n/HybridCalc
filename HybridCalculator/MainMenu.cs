@@ -38,7 +38,10 @@ namespace HybridCalculator
             item.IncEsTiers();
             item.IncEsFromHybrid();
             MinMaxES.Calculate(item);
-            
+            var altItem = ArmourRepository.CreateAltItem(item);
+            MinMaxES.Calculate(altItem);
+            MinMaxES.StartAgain();
+
         }
 
         private int Choices()
