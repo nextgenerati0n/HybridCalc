@@ -39,9 +39,50 @@ namespace HybridCalculator
                     armour.MaxIncEs = i.Key;
                     int tier = (incTiers.IndexOfValue(i.Value) + 1);
                     armour.IncEsTier = tier;
-                    Helpers.Desc(tier);
+                    //Helpers.Desc(tier);
                     break;
                 }
+        }
+
+        public static void RetrieveIncEsFromHybrid(Armour armour)
+        {
+            SortedList<int, int> incTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
+
+            // Input the tier values
+            incTiers.Add(132, 121);
+            incTiers.Add(120, 101);
+            incTiers.Add(100, 83);
+            incTiers.Add(82, 65);
+
+            int maxIncES = armour.IncEsRoll - armour.MinHybridEs;
+            int minIncES = armour.IncEsRoll - armour.MaxHybridEs;
+            int maxIncEsTier = 0;
+            int minIncEsTier = 0;
+
+            foreach (KeyValuePair<int, int> i in incTiers)
+                if (maxIncES >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                {
+                    armour.MaxIncEs = i.Key;
+                    maxIncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
+                    break;
+                }
+            foreach (KeyValuePair<int, int> i in incTiers)
+                if (minIncES >= (i.Value)) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
+                {
+                    armour.MinIncEs = i.Value;
+                    minIncEsTier = (incTiers.IndexOfValue(i.Value) + 1);
+                    break;
+                }
+            if (maxIncEsTier == minIncEsTier)
+            {
+                armour.IncEsTier = maxIncEsTier;
+                Helpers.Desc(maxIncEsTier);
+            }
+            else
+            {
+                Console.WriteLine($"That could either be Tier: {maxIncEsTier} or Tier: {minIncEsTier} Increased ES, divine and try again");
+                Console.ReadKey();
+            }
         }
 
         public static void RetrieveStunRecovery(Armour armour)
@@ -80,17 +121,6 @@ namespace HybridCalculator
             armour.MinHybridEs = hybridTiers.Values[armour.StunRecoveryTier -1];
             armour.MaxHybridEs = hybridTiers.Keys[armour.StunRecoveryTier -1];
             armour.HybridEsTier = armour.StunRecoveryTier;
-
-            //foreach (KeyValuePair<int, int> i in hybridTiers)
-            //    if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
-            //    {
-            //        armour.MinHybridEs = i.Value;
-            //        armour.MaxHybridEs = i.Key;
-            //        int tier = (hybridTiers.IndexOfValue(i.Value) + 1);
-            //        armour.HybridEsTier = tier;
-            //        Helpers.Desc(tier);
-            //        break;
-            //    }
         }
 
         public static void RetrieveHybridEs(Armour armour)

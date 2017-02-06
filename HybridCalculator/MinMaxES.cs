@@ -21,6 +21,7 @@ namespace HybridCalculator
                 float totalMaxHybrid = armour.MaxIncEs + armour.MaxHybridEs;
                 float minES = (int)Math.Round((armour.BaseES + armour.MinFlatEs) * ((totalMinHybrid + 20) / 100)) + (armour.BaseES + armour.MinFlatEs);
                 float maxES = (int)Math.Round((armour.BaseES + armour.MaxFlatEs) * ((totalMaxHybrid + 20) / 100)) + (armour.BaseES + armour.MaxFlatEs);
+                Console.WriteLine();
                 MinMaxHybridDesc("min", armour.MinHybridEs);
                 MinMaxHybridDesc("max", armour.MaxHybridEs);
                 MinMaxDesc("min", minES);
@@ -30,20 +31,7 @@ namespace HybridCalculator
             }
 
         }
-        //public static void Calculate(int minIncES, int maxIncES, int baseES, int flatES, int minHybridRoll, int maxHybridRoll)
-        //{
-        //    float totalMinHybrid = minIncES + minHybridRoll;
-        //    float totalMaxHybrid = maxIncES + maxHybridRoll;
-        //    float minES = (int)Math.Round((baseES + flatES) * ((totalMinHybrid + 20) / 100)) + (baseES + flatES);
-        //    float maxES = (int)Math.Round((baseES + flatES) * ((totalMaxHybrid + 20) / 100)) + (baseES + flatES);
-        //    MinMaxHybridDesc("min", minHybridRoll);
-        //    MinMaxHybridDesc("max", maxHybridRoll);
-        //    MinMaxDesc("min", minES);
-        //    MinMaxDesc("max", maxES);
-        //    StartAgain();
-        //    return;
 
-        //}
         static void MinMaxHybridDesc(string minMax, int hybridRoll) //Prints out the min/max total inc hybrid values
         {
             Console.WriteLine($"The {minMax} % Hybrid Energy Shield that can roll on this item is: {hybridRoll}");

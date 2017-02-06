@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Armour.cs" />
     <Compile Include="ArmourRepository.cs" />
-    <Compile Include="CalculateHybrid.cs" />
     <Compile Include="MinMaxES.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Program.cs" />

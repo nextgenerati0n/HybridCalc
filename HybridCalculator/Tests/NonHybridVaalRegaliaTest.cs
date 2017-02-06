@@ -38,6 +38,29 @@ namespace HybridCalculator.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void CalculateHybridIncEsTest()
+        {
+            //Arrange
+            var item = new Regalia();
+            item.IncEsRoll = 180;
+            item.IsHybrid = true;
+            item.MinFlatEs = 136;
+            item.MaxFlatEs = 145;
+            item.MinHybridEs = 51;
+            item.MaxHybridEs = 56;
+            item.IncEsFromHybrid();
+            var expectedMax = 132;
+            var expectedMin = 121;
+
+            //Act
+            var actualMax = item.MaxIncEs;
+            var actualMin = item.MinIncEs;
+
+            //Assert
+            Assert.AreEqual(expectedMax, actualMax);
+            Assert.AreEqual(expectedMin, actualMin);
+        }
     }
 }
 

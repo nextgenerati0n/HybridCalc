@@ -95,6 +95,10 @@ namespace HybridCalculator
         {
             ArmourRepository.RetrieveStunRecovery(this);
         }
+        public void IncEsFromHybrid()
+        {
+            ArmourRepository.RetrieveIncEsFromHybrid(this);
+        }
     }
 
     class Regalia : Armour
@@ -132,9 +136,10 @@ namespace HybridCalculator
             flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
 
             // Input the flat tier values
-            flatTiers.Add(48, 2);
-            flatTiers.Add(72, 1);
-            flatTiers.Add(78, 0);
+            flatTiers.Add(78, 73);
+            flatTiers.Add(72, 49);
+            flatTiers.Add(48, 30);
+            flatTiers.Add(29, 20);
         }
     }
 
@@ -152,10 +157,11 @@ namespace HybridCalculator
             flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
 
             // Add the flat tier values
-            flatTiers.Add(72, 3);
-            flatTiers.Add(106, 2);
-            flatTiers.Add(135, 1);
-            flatTiers.Add(141, 0);
+            flatTiers.Add(141, 136);
+            flatTiers.Add(135, 107);
+            flatTiers.Add(106, 73);
+            flatTiers.Add(72, 49);
+            flatTiers.Add(48, 30);
         }
     }
 }
