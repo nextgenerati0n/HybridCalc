@@ -24,13 +24,13 @@ namespace HybridCalculator
 
         public static void RetrieveIncEs(Armour armour)
         {
-            SortedList<int, int> incTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the tier values
-            incTiers.Add(132, 121);
-            incTiers.Add(120, 101);
-            incTiers.Add(100, 83);
-            incTiers.Add(82, 65);
+            SortedList<int, int> incTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                {132, 121},
+                {120, 101},
+                {100, 83},
+                {82, 65}
+            };
 
             foreach (KeyValuePair<int, int> i in incTiers)
                 if (armour.IncEsRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
@@ -46,13 +46,13 @@ namespace HybridCalculator
 
         public static void RetrieveIncEsFromHybrid(Armour armour)
         {
-            SortedList<int, int> incTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the tier values
-            incTiers.Add(132, 121);
-            incTiers.Add(120, 101);
-            incTiers.Add(100, 83);
-            incTiers.Add(82, 65);
+            SortedList<int, int> incTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                {132, 121},
+                {120, 101},
+                {100, 83},
+                {82, 65}
+            };
 
             int maxIncES = armour.IncEsRoll - armour.MinHybridEs;
             int minIncES = armour.IncEsRoll - armour.MaxHybridEs;
@@ -87,15 +87,15 @@ namespace HybridCalculator
 
         public static void RetrieveStunRecovery(Armour armour)
         {
-            SortedList<int, int> stunRecoveryTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the tier values
-            stunRecoveryTiers.Add(17, 16);
-            stunRecoveryTiers.Add(15, 14);
-            stunRecoveryTiers.Add(13, 12);
-            stunRecoveryTiers.Add(11, 10);
-            stunRecoveryTiers.Add(9, 8);
-            stunRecoveryTiers.Add(6, 7);
+            SortedList<int, int> stunRecoveryTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                {17, 16},
+                {15, 14},
+                {13, 12},
+                {11, 10},
+                {9, 8},
+                {6, 7}
+            };
 
             foreach (KeyValuePair<int, int> i in stunRecoveryTiers)
                 if (armour.StunRecoveryRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
@@ -108,33 +108,31 @@ namespace HybridCalculator
                     break;
                 }
 
-            SortedList<int, int> hybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the tier values
-            hybridTiers.Add(56, 51);
-            hybridTiers.Add(50, 42);
-            hybridTiers.Add(41, 33);
-            hybridTiers.Add(32, 21);
-            hybridTiers.Add(23, 15);
-            hybridTiers.Add(14, 6);
-
-            armour.MinHybridEs = hybridTiers.Values[armour.StunRecoveryTier -1];
-            armour.MaxHybridEs = hybridTiers.Keys[armour.StunRecoveryTier -1];
+            SortedList<int, int> hybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+            {56, 51},
+            {50, 42},
+            {41, 33},
+            {32, 21},
+            {23, 15},
+            {14, 6}
+        };
+            armour.MinHybridEs = hybridTiers.Values[armour.StunRecoveryTier - 1];
+            armour.MaxHybridEs = hybridTiers.Keys[armour.StunRecoveryTier - 1];
             armour.HybridEsTier = armour.StunRecoveryTier;
         }
 
         public static void RetrieveHybridEs(Armour armour)
         {
-            SortedList<int, int> HybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the tier values
-            HybridTiers.Add(56, 51);
-            HybridTiers.Add(50, 42);
-            HybridTiers.Add(41, 33);
-            HybridTiers.Add(32, 21);
-            HybridTiers.Add(23, 15);
-            HybridTiers.Add(14, 6);
-
+            SortedList<int, int> HybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+            {56, 51},
+            {50, 42},
+            {41, 33},
+            {32, 21},
+            {23, 15},
+            {14, 6}
+            };
             foreach (KeyValuePair<int, int> i in HybridTiers)
                 if (armour.IncEsRoll >= i.Value) //Cycles through and compares their value with the list of tiers to determine the maximum they can achieve
                 {

@@ -29,13 +29,12 @@ namespace HybridCalculator
         public int HybridEsTier { get; set; }
         public int MinHybridEs { get; set; }
         public int MaxHybridEs { get; set; }
-        // minFlat property to set the lowest allowable value on an item
+        //Properties to set the range of permitted values
         protected int minFlat { get; set; }
-        // maxFlat property to set the highest allowable value on an item
         protected int maxFlat { get; set; }
-        // Declares whether the item is hybrid or not ** not used in logic at the time **
+        // Declares whether the item is hybrid or not
         public bool IsHybrid { get; set; }
-        // To store the baseES of each different item 
+        // Backing field to store the baseES of each different item 
         protected int _baseES;
         // BaseES property for different classes
         public int BaseES
@@ -116,13 +115,13 @@ namespace HybridCalculator
             // if the value > 152, it is non existant technically
             maxFlat = 152;
             // init the dictionary to save the flat tiers in.
-            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Add the flat tier values into our dictionary.
-            flatTiers.Add(152, 146);
-            flatTiers.Add(145, 136);
-            flatTiers.Add(135, 107);
-            flatTiers.Add(106, 73);
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                {152, 146},
+                {145, 136},
+                {135, 107},
+                {106, 73}
+            };
         }
     }
 
@@ -137,13 +136,13 @@ namespace HybridCalculator
             // if the value > 78, it is non existant technically
             maxFlat = 78;
             // init the dictionary to save the flat tiers in.
-            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Input the flat tier values
-            flatTiers.Add(78, 73);
-            flatTiers.Add(72, 49);
-            flatTiers.Add(48, 30);
-            flatTiers.Add(29, 20);
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                {78, 73},
+                {72, 49},
+                {48, 30},
+                {29, 20}
+            };
         }
     }
 
@@ -158,14 +157,14 @@ namespace HybridCalculator
             // if the value > 141, it is non existant technically
             maxFlat = 141;
             // init the flattiers dictionary
-            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
-
-            // Add the flat tier values
-            flatTiers.Add(141, 136);
-            flatTiers.Add(135, 107);
-            flatTiers.Add(106, 73);
-            flatTiers.Add(72, 49);
-            flatTiers.Add(48, 30);
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                { 141, 136},
+                { 135, 107},
+                { 106, 73},
+                { 72, 49},
+                { 48, 30}
+            };
         }
     }
 }
