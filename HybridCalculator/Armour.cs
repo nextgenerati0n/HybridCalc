@@ -21,6 +21,8 @@ namespace HybridCalculator
         public int AltIncEsTier { get; set; }
         public int AltMinIncEs { get; set; }
         public int AltMaxIncEs { get; set; }
+        //Property that determines if the outcome is between 2 possible tiers or just 1
+        public bool AltItem { get; internal set; }
         //Properties to store the Stun Recovery tier and the potential min/max Stun Recovery values of the item
         public int StunRecoveryTier { get; set; }
         public int MinStunRecovery { get; set; }
@@ -44,7 +46,6 @@ namespace HybridCalculator
         protected int _incEsRoll;
         protected int _stunRecoveryRoll;
         protected int _hybridRoll;
-
 
         // Properties for user enterable values
         public int FlatEsRoll
@@ -132,7 +133,7 @@ namespace HybridCalculator
             // set the base ES value
             _baseES = 100;
             // if the value < 30, it is shit
-            minFlat = 30;
+            minFlat = 20;
             // if the value > 78, it is non existant technically
             maxFlat = 78;
             // init the dictionary to save the flat tiers in.
@@ -145,7 +146,6 @@ namespace HybridCalculator
             };
         }
     }
-
     class SpiritShield : Armour
     {
         public SpiritShield()
@@ -153,7 +153,7 @@ namespace HybridCalculator
             // Set the base ES value
             _baseES = 84;
             // if the value < 49, it is shit
-            minFlat = 49;
+            minFlat = 30;
             // if the value > 141, it is non existant technically
             maxFlat = 141;
             // init the flattiers dictionary
@@ -167,4 +167,49 @@ namespace HybridCalculator
             };
         }
     }
+
+    class SorcererGloves : Armour
+    {
+        public SorcererGloves()
+        {
+            // Set the base ES value
+            _baseES = 61;
+            // if the value < 49, it is shit
+            minFlat = 9;
+            // if the value > 141, it is non existant technically
+            maxFlat = 48;
+            // init the flattiers dictionary
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                { 48, 30},
+                { 29, 20},
+                { 19, 16},
+                { 15, 13},
+                { 12, 9}
+            };
+        }
+    }
+
+    class SorcererBoots : Armour
+    {
+        public SorcererBoots()
+        {
+            // Set the base ES value
+            _baseES = 64;
+            // if the value < 49, it is shit
+            minFlat = 9;
+            // if the value > 141, it is non existant technically
+            maxFlat = 48;
+            // init the flattiers dictionary
+            flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
+            {
+                { 48, 30},
+                { 29, 20},
+                { 19, 16},
+                { 15, 13},
+                { 12, 9}
+            };
+        }
+    }
+
 }

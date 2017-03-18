@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AffixTiers.cs" />
     <Compile Include="Armour.cs" />
     <Compile Include="ArmourRepository.cs" />
     <Compile Include="MinMaxES.cs" />

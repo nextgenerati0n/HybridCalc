@@ -22,7 +22,14 @@ namespace HybridCalculator
                 case 3:
                     item = new SpiritShield();
                     break;
+                case 4:
+                    item = new SorcererGloves();
+                    break;
+                case 5:
+                    item = new SorcererBoots();
+                    break;
             }
+
             //Get the current flat ES value of the item
             item.FlatEsRoll = EnterFlatEsValue();
             //Determine what the maximum potential Flat ES value is and return it
@@ -38,10 +45,14 @@ namespace HybridCalculator
             item.IncEsTiers();
             item.IncEsFromHybrid();
             MinMaxES.Calculate(item);
-            var altItem = ArmourRepository.CreateAltItem(item);
-            MinMaxES.Calculate(altItem);
-            MinMaxES.StartAgain();
-
+            if (item.AltItem == true)
+            {
+                var altItem = ArmourRepository.CreateAltItem(item);
+                MinMaxES.Calculate(altItem);
+                MinMaxES.StartAgain();
+            }
+            else
+                MinMaxES.StartAgain();
         }
 
         private int Choices()
@@ -53,7 +64,8 @@ namespace HybridCalculator
             Console.WriteLine("1) Vaal Regalia");
             Console.WriteLine("2) Hubris Circlet");
             Console.WriteLine("3) Titanium Spirit Shield");
-
+            Console.WriteLine("4) Sorcerer Gloves");
+            Console.WriteLine("5) Sorcerer Boots");
             // Parse what we read from the console 
             return int.Parse(Console.ReadLine());
         }

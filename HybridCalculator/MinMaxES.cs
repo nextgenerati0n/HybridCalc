@@ -12,7 +12,6 @@ namespace HybridCalculator
                 float maxES = (int)Math.Round((armour.BaseES + armour.MaxFlatEs) * ((armour.MaxIncEs + 20f) / 100)) + (armour.BaseES + armour.MaxFlatEs);
                 MinMaxDesc("min", minES);
                 MinMaxDesc("max", maxES);
-                StartAgain();
                 return;
             }
             else if (armour.IsHybrid == true)

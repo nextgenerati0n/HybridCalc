@@ -75,13 +75,14 @@ namespace HybridCalculator
                 }
             if (armour.IncEsTier == armour.AltIncEsTier)
             {
+                armour.AltItem = false;
                 armour.AltIncEsTier = armour.IncEsTier;
                 Helpers.Desc(armour.IncEsTier);
             }
             else
             {
+                armour.AltItem = true;
                 Console.WriteLine($"That could either be Tier: {armour.IncEsTier} or Tier: {armour.AltIncEsTier} Increased ES, divine and try again");
-                Console.ReadKey();
             }
         }
 
