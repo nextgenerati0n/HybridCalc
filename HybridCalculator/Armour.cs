@@ -89,19 +89,19 @@ namespace HybridCalculator
         //Funcrions to determine the min/max values based on the what the user entered
         public void FlatTiers()
         {
-            ArmourRepository.RetrieveFlatEs(this);
+            AffixTier.RetrieveFlatEs(this);
         }
         public void IncEsTiers()
         {
-            ArmourRepository.RetrieveIncEs(this);
+            AffixTier.RetrieveIncEs(this);
         }
         public void StunRecoveryTiers()
         {
-            ArmourRepository.RetrieveStunRecovery(this);
+            AffixTier.RetrieveStunRecovery(this);
         }
         public void IncEsFromHybrid()
         {
-            ArmourRepository.RetrieveIncEsFromHybrid(this);
+            AffixTier.RetrieveIncEsFromHybrid(this);
         }
     }
 

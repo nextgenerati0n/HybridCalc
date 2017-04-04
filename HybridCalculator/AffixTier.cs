@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HybridCalculator
 {
-    public static class ArmourRepository
+    public static class AffixTier
     {
         //Method that takes the user entered input and determines the tier and uppper/lower boundries of the tier for that particular armour item
         public static void RetrieveFlatEs(Armour armour)
@@ -52,7 +52,10 @@ namespace HybridCalculator
                 {132, 121},
                 {120, 101},
                 {100, 83},
-                {82, 65}
+                {82, 65},
+                {64, 47},
+                {46, 29},
+                {28, 11 }
             };
 
             int maxIncES = armour.IncEsRoll - armour.MinHybridEs;
@@ -125,7 +128,7 @@ namespace HybridCalculator
             armour.MaxHybridEs = hybridTiers.Keys[armour.StunRecoveryTier - 1];
             armour.HybridEsTier = armour.StunRecoveryTier;
         }
-
+        /*
         public static void RetrieveHybridEs(Armour armour)
         {
             SortedList<int, int> HybridTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
@@ -148,6 +151,7 @@ namespace HybridCalculator
                     break;
                 }
         }
+        */
         //Method to create an alternative armour object to display es ranges if the tier possibilities are different
         public static Armour CreateAltItem(Armour armour)
         {

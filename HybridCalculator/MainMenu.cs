@@ -47,7 +47,7 @@ namespace HybridCalculator
             MinMaxES.Calculate(item);
             if (item.AltItem == true)
             {
-                var altItem = ArmourRepository.CreateAltItem(item);
+                var altItem = AffixTier.CreateAltItem(item);
                 MinMaxES.Calculate(altItem);
                 MinMaxES.StartAgain();
             }

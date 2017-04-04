@@ -16,7 +16,7 @@ namespace HybridCalculator.Tests
             //Arrange
             var item = new Regalia();
             item.IncEsRoll = 125;
-            ArmourRepository.RetrieveIncEs(item);
+            AffixTier.RetrieveIncEs(item);
             var expected = 1;
             //Act
             var actual = item.AltIncEsTier;
@@ -30,7 +30,7 @@ namespace HybridCalculator.Tests
             //Arrange
             var item = new Regalia();
             item.FlatEsRoll = 125;
-            ArmourRepository.RetrieveFlatEs(item);
+            AffixTier.RetrieveFlatEs(item);
             var expected = 2;
             //Act
             var actual = item.FlatEsTier;
