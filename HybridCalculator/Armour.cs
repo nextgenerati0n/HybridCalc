@@ -110,7 +110,6 @@ namespace HybridCalculator
         {
             AffixTier.RetrieveIncEsFromHybrid(this);
         }
-
         public Armour ShallowCopy()
         {
             return (Armour)this.MemberwiseClone();

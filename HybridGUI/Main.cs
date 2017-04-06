@@ -41,7 +41,6 @@ namespace HybridGUI
 
         public void button1_Click(object sender, EventArgs e)
         {
-
             Armour item = new Regalia();
             item.FlatEsRoll = Int32.Parse(flatEsRollTextBox.Text);
             item.FlatTiers();
@@ -58,12 +57,12 @@ namespace HybridGUI
             MinMaxES.Calculate(item);
             if (item.AltItem == true)
             {
+
                 tabControl1.SelectTab(1);
-                tabControl1.TabPages.RemoveAt(0);
+
                 Armour altItem = AffixTier.CreateAltItem(item);
                 MinMaxES.Calculate(altItem);
 
-                incEsTier = item.IncEsTier;
                 minEsResultTextBox2.Text = item.MinEsResult.ToString();
                 maxEsResultTextBox2.Text = item.MaxEsResult.ToString();
                 toolTip1.SetToolTip(this.progressBar2, $"Current ES is : {item.CurrentEsResult}");
@@ -71,7 +70,6 @@ namespace HybridGUI
                 progressBar2.Maximum = item.MaxEsResult;
                 progressBar2.Value = item.CurrentEsResult;
 
-                altIncEsTier = item.AltIncEsTier;
                 minAltEsResultTextBox.Text = altItem.MinEsResult.ToString();
                 maxAltEsResultTextBox.Text = altItem.MaxEsResult.ToString();
                 toolTip1.SetToolTip(this.progressBar3, $"Current ES is : {altItem.CurrentEsResult}");
@@ -79,21 +77,25 @@ namespace HybridGUI
                 progressBar3.Maximum = altItem.MaxEsResult;
                 progressBar3.Value = item.CurrentEsResult;
 
+                incEsTier = item.IncEsTier;
+                altIncEsTier = item.AltIncEsTier;
                 label4.Text = $"The Increased tier could be either Tier: {incEsTier} or Tier: {altIncEsTier}";
                 label4.TextAlign = ContentAlignment.MiddleCenter;
             }
             else
             {
                 tabControl1.SelectTab(0);
-                tabControl1.TabPages.RemoveAt(1);
                 minEsResultTextBox.Text = item.MinEsResult.ToString();
                 maxEsResultTextBox.Text = item.MaxEsResult.ToString();
                 toolTip1.SetToolTip(this.progressBar1, $"Current ES is : {item.CurrentEsResult}");
                 progressBar1.Minimum = item.MinEsResult;
                 progressBar1.Maximum = item.MaxEsResult;
                 progressBar1.Value = item.CurrentEsResult;
-            }
 
+                incEsTier = item.IncEsTier;
+                label5.Text = $"The Increased Energy Shield is Tier: {incEsTier}";
+                label5.TextAlign = ContentAlignment.MiddleCenter;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -149,6 +151,18 @@ namespace HybridGUI
         private void stunRecoveryRollTextBox_TextChanged(object sender, EventArgs e)
         {
  
+        }
+
+        private void incEsRollTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Int32.Parse(incEsRollTextBox.Text) > 132)
+            {
+                hasStunRecoveryCheckBox.Checked = true;
+            }
+            else
+            {
+                hasStunRecoveryCheckBox.Checked = false;
+            }
         }
     }
 }

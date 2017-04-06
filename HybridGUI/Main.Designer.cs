@@ -57,6 +57,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.maxEsResultTextBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.incEsRollTextBox.Name = "incEsRollTextBox";
             this.incEsRollTextBox.Size = new System.Drawing.Size(57, 20);
             this.incEsRollTextBox.TabIndex = 4;
+            this.incEsRollTextBox.TextChanged += new System.EventHandler(this.incEsRollTextBox_TextChanged);
             // 
             // richTextBox1
             // 
@@ -181,6 +183,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.textBox3);
             this.tabPage1.Controls.Add(this.progressBar1);
             this.tabPage1.Controls.Add(this.minEsResultTextBox);
@@ -198,7 +201,7 @@
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(242, 47);
+            this.textBox3.Location = new System.Drawing.Point(237, 69);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(67, 13);
             this.textBox3.TabIndex = 13;
@@ -206,7 +209,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(81, 92);
+            this.progressBar1.Location = new System.Drawing.Point(76, 114);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(239, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -215,7 +218,7 @@
             // 
             // minEsResultTextBox
             // 
-            this.minEsResultTextBox.Location = new System.Drawing.Point(81, 66);
+            this.minEsResultTextBox.Location = new System.Drawing.Point(76, 88);
             this.minEsResultTextBox.Name = "minEsResultTextBox";
             this.minEsResultTextBox.Size = new System.Drawing.Size(100, 20);
             this.minEsResultTextBox.TabIndex = 11;
@@ -225,7 +228,7 @@
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.Control;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Location = new System.Drawing.Point(97, 47);
+            this.textBox4.Location = new System.Drawing.Point(92, 69);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(67, 13);
             this.textBox4.TabIndex = 14;
@@ -233,7 +236,7 @@
             // 
             // maxEsResultTextBox
             // 
-            this.maxEsResultTextBox.Location = new System.Drawing.Point(220, 66);
+            this.maxEsResultTextBox.Location = new System.Drawing.Point(215, 88);
             this.maxEsResultTextBox.Name = "maxEsResultTextBox";
             this.maxEsResultTextBox.Size = new System.Drawing.Size(100, 20);
             this.maxEsResultTextBox.TabIndex = 12;
@@ -331,6 +334,16 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "The Increased tier could be either Tier: # or Tier: #";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(79, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(230, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "The Increased Energy Shield is Tier: # ";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +403,7 @@
         private System.Windows.Forms.TextBox minAltEsResultTextBox;
         private System.Windows.Forms.TextBox maxAltEsResultTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
