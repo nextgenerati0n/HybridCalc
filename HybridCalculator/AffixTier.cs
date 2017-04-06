@@ -18,7 +18,7 @@ namespace HybridCalculator
                     armour.MaxFlatEs = i.Key;
                     int tier = armour.flatTiers.IndexOfKey(i.Key);
                     armour.FlatEsTier = tier;
-                    Helpers.Desc(tier);
+                    //Helpers.Desc(tier);
                     break;
                 }
         }
@@ -111,7 +111,7 @@ namespace HybridCalculator
                     armour.MaxStunRecovery = i.Key;
                     int tier = (stunRecoveryTiers.IndexOfValue(i.Value) + 1);
                     armour.StunRecoveryTier = tier;
-                    Helpers.Desc(tier);
+                    //Helpers.Desc(tier);
                     break;
                 }
 
@@ -156,7 +156,7 @@ namespace HybridCalculator
         public static Armour CreateAltItem(Armour armour)
         {
             Armour altArmour = new Armour();
-            altArmour = armour;
+            altArmour = armour.ShallowCopy();
             altArmour.IncEsTier = armour.AltIncEsTier;
             altArmour.MaxIncEs = armour.AltMaxIncEs;
             altArmour.MinIncEs = armour.AltMinIncEs;

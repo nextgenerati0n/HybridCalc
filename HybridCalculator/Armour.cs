@@ -7,6 +7,7 @@ namespace HybridCalculator
     public class Armour
     {
         #region Properties
+        public object Name { get; set; }
         // To store tier information
         public SortedList<int, int> flatTiers;
         //Properties to store the Flat ES tier and the potential min/max Flat ES values of the item
@@ -35,7 +36,11 @@ namespace HybridCalculator
         protected int minFlat { get; set; }
         protected int maxFlat { get; set; }
         // Declares whether the item is hybrid or not
-        public bool IsHybrid { get; set; }
+        public bool? IsHybrid { get; set; }
+        //Finals ES results
+        public int CurrentEsResult { get; set; }
+        public int MinEsResult { get; set; }
+        public int MaxEsResult { get; set; }
         // Backing field to store the baseES of each different item 
         protected int _baseES;
         // BaseES property for different classes
@@ -84,6 +89,8 @@ namespace HybridCalculator
                     Console.WriteLine(Helpers.ValidationMessage);
             }
         }
+
+
         #endregion
 
         //Funcrions to determine the min/max values based on the what the user entered
@@ -103,12 +110,18 @@ namespace HybridCalculator
         {
             AffixTier.RetrieveIncEsFromHybrid(this);
         }
+
+        public Armour ShallowCopy()
+        {
+            return (Armour)this.MemberwiseClone();
+        }
     }
 
-    class Regalia : Armour
+    public class Regalia : Armour
     {
         public Regalia()
         {
+            Name = "Regalia";
             // set the base ES value
             _baseES = 175;
             // if the value < 73, it is shit
@@ -126,7 +139,7 @@ namespace HybridCalculator
         }
     }
 
-    class Circlet : Armour
+    public class Circlet : Armour
     {
         public Circlet()
         {
@@ -146,7 +159,7 @@ namespace HybridCalculator
             };
         }
     }
-    class SpiritShield : Armour
+    public class SpiritShield : Armour
     {
         public SpiritShield()
         {
@@ -168,7 +181,7 @@ namespace HybridCalculator
         }
     }
 
-    class SorcererGloves : Armour
+    public class SorcererGloves : Armour
     {
         public SorcererGloves()
         {
@@ -190,7 +203,7 @@ namespace HybridCalculator
         }
     }
 
-    class SorcererBoots : Armour
+    public class SorcererBoots : Armour
     {
         public SorcererBoots()
         {

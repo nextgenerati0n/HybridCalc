@@ -53,6 +53,7 @@ namespace HybridCalculator
             }
             else
                 MinMaxES.StartAgain();
+
         }
 
         private int Choices()

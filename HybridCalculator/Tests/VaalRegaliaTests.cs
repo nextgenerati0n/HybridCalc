@@ -61,6 +61,29 @@ namespace HybridCalculator.Tests
             Assert.AreEqual(expectedMax, actualMax);
             Assert.AreEqual(expectedMin, actualMin);
         }
+        [TestMethod]
+        public void CalculateFinalEsResult()
+        {
+            //Arrange
+            var item = new Regalia();
+            item.MinIncEs = 121;
+            item.MaxIncEs = 132;
+            item.IsHybrid = false;
+            item.MinFlatEs = 136;
+            item.MaxFlatEs = 145;
+            MinMaxES.Calculate(item);
+            var expectedMax = 806;
+            var expectedMin = 750;
+
+            //Act
+            var actualMin = item.MinEsResult;
+            var actualMax = item.MaxEsResult;
+
+            //Assert
+            Assert.AreEqual(expectedMax, actualMax);
+            Assert.AreEqual(expectedMin, actualMin);
+        }
+
     }
 }
 

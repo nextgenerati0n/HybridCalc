@@ -2,29 +2,31 @@
 
 namespace HybridCalculator
 {
-    class MinMaxES
+    public class MinMaxES
     {
-        public static void Calculate(Armour armour)
+        public static void Calculate(Armour item)
         {
-            if (armour.IsHybrid == false)
+            if (item.IsHybrid == false)
             {
-                float minES = (int)Math.Round((armour.BaseES + armour.MinFlatEs) * ((armour.MinIncEs + 20f) / 100)) + (armour.BaseES + armour.MinFlatEs);
-                float maxES = (int)Math.Round((armour.BaseES + armour.MaxFlatEs) * ((armour.MaxIncEs + 20f) / 100)) + (armour.BaseES + armour.MaxFlatEs);
-                MinMaxDesc("min", minES);
-                MinMaxDesc("max", maxES);
+                item.CurrentEsResult = (int)Math.Round((item.BaseES + item.FlatEsRoll) * ((item.IncEsRoll + 20f) / 100)) + (item.BaseES + item.FlatEsRoll);
+                item.MinEsResult = (int)Math.Round((item.BaseES + item.MinFlatEs) * ((item.MinIncEs + 20f) / 100)) + (item.BaseES + item.MinFlatEs);
+                item.MaxEsResult = (int)Math.Round((item.BaseES + item.MaxFlatEs) * ((item.MaxIncEs + 20f) / 100)) + (item.BaseES + item.MaxFlatEs);
+                MinMaxDesc("min", item.MinEsResult);
+                MinMaxDesc("max", item.MaxEsResult);
                 return;
             }
-            else if (armour.IsHybrid == true)
+            else if (item.IsHybrid == true)
             {
-                float totalMinHybrid = armour.MinIncEs + armour.MinHybridEs;
-                float totalMaxHybrid = armour.MaxIncEs + armour.MaxHybridEs;
-                float minES = (int)Math.Round((armour.BaseES + armour.MinFlatEs) * ((totalMinHybrid + 20) / 100)) + (armour.BaseES + armour.MinFlatEs);
-                float maxES = (int)Math.Round((armour.BaseES + armour.MaxFlatEs) * ((totalMaxHybrid + 20) / 100)) + (armour.BaseES + armour.MaxFlatEs);
+                float totalMinHybrid = item.MinIncEs + item.MinHybridEs;
+                float totalMaxHybrid = item.MaxIncEs + item.MaxHybridEs;
+                item.CurrentEsResult = (int)Math.Round((item.BaseES + item.FlatEsRoll) * ((item.IncEsRoll + 20f) / 100)) + (item.BaseES + item.FlatEsRoll);
+                item.MinEsResult = (int)Math.Round((item.BaseES + item.MinFlatEs) * ((totalMinHybrid + 20) / 100)) + (item.BaseES + item.MinFlatEs);
+                item.MaxEsResult = (int)Math.Round((item.BaseES + item.MaxFlatEs) * ((totalMaxHybrid + 20) / 100)) + (item.BaseES + item.MaxFlatEs);
                 Console.WriteLine();
-                MinMaxHybridDesc("min", armour.MinHybridEs);
-                MinMaxHybridDesc("max", armour.MaxHybridEs);
-                MinMaxDesc("min", minES);
-                MinMaxDesc("max", maxES);
+                MinMaxHybridDesc("min", item.MinHybridEs);
+                MinMaxHybridDesc("max", item.MaxHybridEs);
+                MinMaxDesc("min", item.MinEsResult);
+                MinMaxDesc("max", item.MaxEsResult);
                 return;
             }
 
