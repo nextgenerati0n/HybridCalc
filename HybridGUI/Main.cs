@@ -17,14 +17,25 @@ namespace HybridGUI
         public int incEsTier { get; set; }
         public int altIncEsTier { get; set; }
         public Main()
-        {
-            InitializeComponent();
-            this.stunRecoveryRollTextBox.Enabled = false;
-            tabControl1.ItemSize = new Size(0, 1);
-            tabControl1.SizeMode = TabSizeMode.Fixed;
-        }
+		{
+			InitializeComponent();
+			FormatTextBoxes();
+		}
 
-        private void label1_Click(object sender, EventArgs e)
+		private void FormatTextBoxes()
+		{
+			this.stunRecoveryRollTextBox.Enabled = false;
+			tabControl1.ItemSize = new Size(0, 1);
+			tabControl1.SizeMode = TabSizeMode.Fixed;
+			toolTip1.SetToolTip(this.flatEsRollTextBox, $"Enter a value from 3-145");
+			toolTip1.SetToolTip(this.incEsRollTextBox, $"Enter a value from 11-188");
+			toolTip1.SetToolTip(this.stunRecoveryRollTextBox, $"Enter a value from 6-17");
+			flatEsRollTextBox.Select(0, textBox1.Text.Length);
+			incEsRollTextBox.Select(0, textBox1.Text.Length);
+			stunRecoveryRollTextBox.Select(0, textBox1.Text.Length);
+		}
+
+		private void label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -42,8 +53,9 @@ namespace HybridGUI
         public void button1_Click(object sender, EventArgs e)
         {
             Armour item = new Regalia();
-            item.FlatEsRoll = Int32.Parse(flatEsRollTextBox.Text);
-            item.FlatTiers();
+			item.FlatEsRoll = Int32.Parse(flatEsRollTextBox.Text);
+
+			item.FlatTiers();
             item.IsHybrid = hasStunRecoveryCheckBox.Checked;
             if (item.IsHybrid ?? true)
             {
@@ -55,7 +67,7 @@ namespace HybridGUI
             item.IncEsFromHybrid();
 
             MinMaxES.Calculate(item);
-            if (item.AltItem == true)
+            if (item.AltItem)
             {
 
                 tabControl1.SelectTab(1);
@@ -96,11 +108,6 @@ namespace HybridGUI
                 label5.Text = $"The Increased Energy Shield is Tier: {incEsTier}";
                 label5.TextAlign = ContentAlignment.MiddleCenter;
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -148,14 +155,39 @@ namespace HybridGUI
             
         }
 
-        private void stunRecoveryRollTextBox_TextChanged(object sender, EventArgs e)
+        private void flatEsRollTextBox_ValueChanged(object sender, EventArgs e)
         {
- 
+
+		}
+
+		private void flatEsRollTextBox_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (flatEsRollTextBox.Value >= 10)
+			{
+				flatEsRollTextBox.Value = 0;
+				MessageBox.Show("number must be less than 10!");
+			}
+		}
+
+		private void flatEsRollTextBox_MouseUp(object sender, MouseEventArgs e)
+		{
+			if (e.Button == System.Windows.Forms.MouseButtons.Right)
+			{
+				if (flatEsRollTextBox.Value >= 10)
+				{
+					flatEsRollTextBox.Value = 0;
+					MessageBox.Show("number must be less than 10!");
+				}
+			}
+		}
+		private void stunRecoveryRollTextBox_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
-        private void incEsRollTextBox_TextChanged(object sender, EventArgs e)
+        private void incEsRollTextBox_ValueChanged(object sender, EventArgs e)
         {
-            if (Int32.Parse(incEsRollTextBox.Text) > 132)
+            if (Convert.ToInt32(incEsRollTextBox.Value) > 132)
             {
                 hasStunRecoveryCheckBox.Checked = true;
             }

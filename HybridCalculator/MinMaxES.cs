@@ -22,7 +22,6 @@ namespace HybridCalculator
                 item.CurrentEsResult = (int)Math.Round((item.BaseES + item.FlatEsRoll) * ((item.IncEsRoll + 20f) / 100)) + (item.BaseES + item.FlatEsRoll);
                 item.MinEsResult = (int)Math.Round((item.BaseES + item.MinFlatEs) * ((totalMinHybrid + 20) / 100)) + (item.BaseES + item.MinFlatEs);
                 item.MaxEsResult = (int)Math.Round((item.BaseES + item.MaxFlatEs) * ((totalMaxHybrid + 20) / 100)) + (item.BaseES + item.MaxFlatEs);
-                Console.WriteLine();
                 MinMaxHybridDesc("min", item.MinHybridEs);
                 MinMaxHybridDesc("max", item.MaxHybridEs);
                 MinMaxDesc("min", item.MinEsResult);
