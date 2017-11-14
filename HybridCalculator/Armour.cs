@@ -128,7 +128,7 @@ namespace HybridCalculator
             Name = "Vaal Regalia";
             // set the base ES value
             _baseES = 175;
-            // if the value < 73, it is shit
+            // if the value < 73, it is not good
             minFlat = 73;
             // if the value > 152, it is non existant technically
             maxFlat = 152;
