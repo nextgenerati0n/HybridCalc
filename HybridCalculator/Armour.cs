@@ -130,7 +130,7 @@ namespace HybridCalculator
             _baseES = 175;
             // if the value < 73, it is not good
             minFlat = 73;
-            // if the value > 152, it is non existant technically
+            // if the value > 152, it is non existant technically..
             maxFlat = 152;
             // init the dictionary to save the flat tiers in.
             flatTiers = new SortedList<int, int>(Comparer<int>.Create((x, y) => y.CompareTo(x)))
