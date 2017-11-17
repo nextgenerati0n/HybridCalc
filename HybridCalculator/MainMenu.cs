@@ -4,7 +4,7 @@ namespace HybridCalculator
 {
     public class MainMenu
     {
-        // Armour object to determine the baseES with
+        // Armour object to determine the baseES with test
         Armour item;
 
         public void Menu()
